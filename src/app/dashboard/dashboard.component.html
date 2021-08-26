@@ -108,6 +108,8 @@
                   class="dropdown-item"
                   href="#"
                   *ngFor="let project of Projects"
+                  onclick="return false"
+                  (click)="onProjectChange($event)"
                   >{{ project }}</a
                 >
               </div>
