@@ -128,9 +128,23 @@
                 2019
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#" *ngFor="let year of Years">{{
-                  year
-                }}</a>
+                <a class="dropdown-item" href="#" *ngFor="let year of Years">
+                  <!-- {{year}} -->
+                  <span [ngSwitch]="year">
+                    <span *ngSwitchCase="'2019'" style="color: green">{{
+                      year
+                      }}</span>
+                    <span *ngSwitchCase="'2018'" style="color: blue">{{
+                      year
+                      }}</span>
+                    <span *ngSwitchCase="'2017'" style="color: red">{{
+                      year
+                      }}</span>
+                    <span *ngSwitchDefault style="color: black">{{
+                      year 
+                      }}</span>
+                  </span>
+                </a>
               </div>
             </div>
           </div>
