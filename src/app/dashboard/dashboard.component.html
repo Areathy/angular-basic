@@ -198,6 +198,7 @@
             class="card"
             *ngFor="let teamMembersGroup of TeamMembers; let i = index"
           >
+          <!-- <div *ngIf = "i !=0"> -->
             <div class="card-header bg-secondary" id="card1">
               <h2 class="mb-0">
                 <button
@@ -217,6 +218,17 @@
               [ngClass] = "(i == 0) ? 'show' : ''"
             >
               <div class="card-body">
+
+                <div *ngIf = "i == 0; then firstTemplate; else secondTemplate"></div>
+
+                <ng-template #firstTemplate >
+                  <div class="card" *ngFor="let member of teamMembersGroup.Members">
+                  <div class="card-header bg-primary text-white">#{{member.ID}} {{member.Name}}</div>
+                  <div class="card-body">{{member.Status}}</div>
+                  </div>
+                </ng-template>
+
+                <ng-template #secondTemplate> 
                 <table class="table">
                   <thead>
                     <tr>
@@ -233,8 +245,11 @@
                     </tr>
                   </tbody>
                 </table>
+              </ng-template>
+
               </div>
             </div>
+          <!-- </div> -->
           </div>
         </div>
       </div>
