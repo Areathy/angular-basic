@@ -1,7 +1,43 @@
 <h1>Projects</h1>
 <div class="row">
   <div class="col-8 mx-auto">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#newModal">
+    <div class="form-group form-row">
+      <label for="drpSearchBy" class="col-form-label col-3">Search:</label>
+      <div class="col-9">
+        <select
+          class="form-control"
+          id="drpSearchBy"
+          name="SearchBy"
+          [(ngModel)]="searchBy"
+        >
+          <option value="ProjectID">Project ID</option>
+          <option value="ProjectName">Project Name</option>
+          <option value="DateOfStart">Date of Start</option>
+          <option value="TeamSize">Team Size</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group form-row">
+      <label for="textSearchText" class="col-form-label col-3">Search:</label>
+      <div class="col-9">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            id="txtSearchText"
+            name="SearchText"
+            [(ngModel)]="searchText"
+          />
+          <div class="input-group-append" (click)="onClickSearch()">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8 mx-auto">
+    <button class="btn btn-primary mb-1" data-toggle="modal" data-target="#newModal">
       Create Project
     </button>
   </div>
@@ -29,7 +65,7 @@
             >
               Edit
             </button>
-            <button class="btn btn-info"
+            <button class="btn btn-danger ml-1"
               (click)="onClickDelete($event, i)" 
               data-toggle="modal" 
               data-target="#deleteModal"
@@ -222,7 +258,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-warning" data-dismiss="modal">Cancel</button>
-          <button class="btn btn-success" data-dismiss="modal" (click)="onClickConfirmDelete()">Delete</button>
+          <button class="btn btn-danger" data-dismiss="modal" (click)="onClickConfirmDelete()">Delete</button>
         </div>
       </div>
     </div>

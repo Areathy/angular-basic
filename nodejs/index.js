@@ -97,3 +97,4 @@ app.get("/api/projects/search/:searchby/:searchtext?", function (req, res) {
   console.log("Response: ", projects);
   res.send(helpers.toCamel(projects));
 });
+

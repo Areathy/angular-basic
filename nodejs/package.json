@@ -1,7 +1,7 @@
 {
   "name": "nodejs-for-angular",
   "version": "1.0.0",
-  "description": "REST API Calls",
+  "description": "Section 5 - REST API Calls - Angular course from Web University by Harsha",
   "main": "index.js",
   "scripts": {
     "test": "none"
@@ -13,7 +13,7 @@
   "keywords": [
     "angular"
   ],
-  "author": "Henrietha",
+  "author": "Harsha",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
