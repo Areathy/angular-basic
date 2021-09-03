@@ -9,9 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService
 {
-  constructor(private httpClient: HttpClient)
-  {
-  }
+  constructor(private httpClient: HttpClient){ }
 
   currentUserName: any = null;
 
