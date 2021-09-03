@@ -1,3 +1,8 @@
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+
+dotenv.config();
+
 function toCamel(o) {
   var newO, origKey, newKey, value;
   if (o instanceof Array) {
@@ -36,5 +41,10 @@ function toCamelCase(str) {
     .replace(/\s+/g, "");
 }
 
+function generateAccessToken(username) {
+  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: "1800s" });
+}
+
 exports.toCamel = toCamel;
 exports.toCamelCase = toCamelCase;
+exports.generateAccessToken = generateAccessToken;
