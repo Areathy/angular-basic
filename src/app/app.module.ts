@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptorService } from './jwt-interceptor.service';
+import { JwtUnAuthorizedInterceptorService } from './jwt-un-authorized-interceptor.service';
 
 
 @NgModule({
@@ -26,6 +27,11 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtUnAuthorizedInterceptorService,
       multi: true
     }
   ],
