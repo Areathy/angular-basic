@@ -41,8 +41,8 @@ function toCamelCase(str) {
     .replace(/\s+/g, "");
 }
 
-function generateAccessToken(username) {
-  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: "1800s" });
+function generateAccessToken(userData) {
+  return jwt.sign(userData, process.env.TOKEN_SECRET, { expiresIn: "18000s" });
 }
 
 exports.toCamel = toCamel;

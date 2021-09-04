@@ -32,7 +32,7 @@ data = {
       UserName: "admin",
       Email: "admin@gmail.com",
       Password: "Admin123#",
-      role: 1,
+      role: "Admin",
     },
   ],
 };
