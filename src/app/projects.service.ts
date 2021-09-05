@@ -38,8 +38,7 @@ export class ProjectsService
       ));
   }
 
-  insertProject(newProject: Project): Observable<Project>
-  {
+  insertProject(newProject: Project): Observable<Project> {
     var currentUser = { token: "" };
     var headers = new HttpHeaders();
     headers = headers.set("Authorization", "Bearer ");
@@ -49,6 +48,8 @@ export class ProjectsService
       headers = headers.set("Authorization", "Bearer " + currentUser.token);
     }
 
+    var requestHeaders = new HttpHeaders();
+    requestHeaders = requestHeaders.set("X-XSRF-TOKEN", sessionStorage.XSRFRequestToken); 
     return this.httpClient.post<Project>(this.urlPrefix + "/api/projects", newProject, { headers: headers, responseType: "json" });
   }
 
