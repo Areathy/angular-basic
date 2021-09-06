@@ -1,5 +1,5 @@
 var fs = require("fs");
-jsonfile = __dirname + "/projects.json";
+jsonfile = __dirname + "/data.json";
 
 data = {
   projects: [
@@ -8,12 +8,26 @@ data = {
       projectName: "Bug Tracking System",
       dateOfStart: "2023-05-07",
       teamSize: 6,
+      active: true,
+      status: "In Force",
+      clientLocationID: 1,
+      clientLocation: {
+        clientLocationID: 1,
+        clientLocationName: "Boston",
+      },
     },
     {
       projectID: 2,
       projectName: "COVID-19 Tracker",
       dateOfStart: "2020-03-15",
       teamSize: 17,
+      Active: false,
+      status: "Support",
+      clientLocationID: 2,
+      clientLocation: {
+        clientLocationID: 2,
+        clientLocationName: "London",
+      },
     },
   ],
   roles: [
@@ -32,7 +46,21 @@ data = {
       UserName: "admin",
       Email: "admin@gmail.com",
       Password: "Admin123#",
-      role: "Admin",
+      Role: "Admin",
+    },
+  ],
+  clientLocations: [
+    {
+      clientLocationID: 1,
+      clientLocationName: "Boston",
+    },
+    {
+      clientLocationID: 2,
+      clientLocationName: "London",
+    },
+    {
+      clientLocationID: 3,
+      clientLocationName: "New Jersy",
     },
   ],
 };

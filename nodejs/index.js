@@ -5,9 +5,11 @@ var cors = require("cors");
 var fs = require("fs");
 var cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
-var helpers = require("./helpers");
 const jwt = require("jsonwebtoken");
 var { randomBytes } = require("crypto");
+var helpers = require("./helpers");
+var projects = require("./projects");
+var clientlocations = require("./clientlocations");
 
 app.listen(9090, startup);
 function startup() {
@@ -29,7 +31,7 @@ app.use(
   })
 );
 
-jsonfile = __dirname + "/projects.json";
+jsonfile = __dirname + "/data.json";
 
 //jwt verification
 function authenticateToken(req, res, next) {
@@ -57,87 +59,54 @@ function verifyXsrf(req, res, next) {
 }
 
 //GET api/projects
-app.get("/api/projects", [authenticateToken], function (req, res) {
-  console.log(req.method, req.url);
-  projects = JSON.parse(fs.readFileSync(jsonfile, "utf8")).projects;
-  console.log("Response: ", projects);
-  res.send(helpers.toCamel(projects));
-});
+app.get("/api/projects", [authenticateToken], projects.getProjects);
 
 //POST api/projects
-app.post("/api/projects", [authenticateToken, verifyXsrf], function (req, res) {
-  console.log(req.method, req.url);
-  projects = JSON.parse(fs.readFileSync(jsonfile)).projects;
-  projects.push(req.body);
-  console.log("Response: ", projects);
-  fs.writeFileSync(
-    jsonfile,
-    JSON.stringify({
-      ...JSON.parse(fs.readFileSync(jsonfile)),
-      projects: projects,
-    }),
-    "utf8"
-  );
-  res.send(helpers.toCamel(req.body));
-});
+app.post(
+  "/api/projects",
+  [authenticateToken, verifyXsrf],
+  projects.postProjects
+);
 
 //PUT api/projects
-app.put("/api/projects", [authenticateToken], function (req, res) {
-  console.log(req.method, req.url);
-  projects = JSON.parse(fs.readFileSync(jsonfile)).projects;
-  projects = projects.map((project) =>
-    project.projectID == req.body.projectID ? req.body : project
-  );
-  console.log("Response: ", projects);
-  fs.writeFileSync(
-    jsonfile,
-    JSON.stringify({
-      ...JSON.parse(fs.readFileSync(jsonfile)),
-      projects: projects,
-    }),
-    "utf8"
-  );
-  res.send(helpers.toCamel(req.body));
-});
+app.put("/api/projects", [authenticateToken], projects.putProjects);
 
 //DELETE api/projects
-app.delete("/api/projects", [authenticateToken], function (req, res) {
-  console.log(req.method, req.url);
-  projects = JSON.parse(fs.readFileSync(jsonfile)).projects;
-  projects = projects.filter(
-    (project) => project.projectID != req.query.ProjectID
-  );
-  console.log("Response: ", projects);
-  fs.writeFileSync(
-    jsonfile,
-    JSON.stringify({
-      ...JSON.parse(fs.readFileSync(jsonfile)),
-      projects: projects,
-    }),
-    "utf8"
-  );
-  res.send(helpers.toCamel(req.body));
-});
+app.delete("/api/projects", [authenticateToken], projects.deleteProjects);
 
 //GET /api/projects/search/:searchby/:searchtext
 app.get(
   "/api/projects/search/:searchby/:searchtext?",
   [authenticateToken],
-  function (req, res) {
-    console.log(req.method, req.url);
-    console.log(req.params);
-    projects = JSON.parse(fs.readFileSync(jsonfile, "utf8")).projects;
-    req.params.searchtext = (req.params.searchtext || "").toUpperCase();
-    req.params.searchby = helpers.toCamelCase(req.params.searchby || "");
-    console.log(req.params);
-    projects = projects.filter((project) => {
-      value = (project[req.params.searchby] || "").toUpperCase();
-      return value.indexOf(req.params.searchtext) >= 0;
-    });
+  projects.searchProjects
+);
 
-    console.log("Response: ", projects);
-    res.send(helpers.toCamel(projects));
-  }
+//GET api/clientlocations
+app.get(
+  "/api/clientlocations",
+  [authenticateToken],
+  clientlocations.getClientLocations
+);
+
+//POST api/clientlocations
+app.post(
+  "/api/clientlocations",
+  [authenticateToken],
+  clientlocations.postClientLocations
+);
+
+//PUT api/clientlocations
+app.put(
+  "/api/clientlocations",
+  [authenticateToken],
+  clientlocations.putClientLocations
+);
+
+//DELETE api/clientlocations
+app.delete(
+  "/api/clientlocations",
+  [authenticateToken],
+  clientlocations.deleteClientLocations
 );
 
 //POST /authenticate
