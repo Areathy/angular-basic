@@ -95,7 +95,6 @@ function getProjectByProjectID(req, res) {
   console.log(req.method, req.url);
   console.log(req.params);
   projects = JSON.parse(fs.readFileSync(jsonfile, "utf8")).projects;
-  console.log(req.params);
   projects = projects.find((project) => {
     return project["projectID"] == req.params.ProjectID;
   });

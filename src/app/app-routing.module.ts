@@ -5,6 +5,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ProjectsComponent } from './admin/projects/projects.component';
 import { LoginComponent } from './login/login.component';
 import { CanActivateGuardService } from './can-activate-guard.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "about", component: AboutComponent},
   {path: "projects", component: ProjectsComponent, canActivate: [ CanActivateGuardService ], data: { expectedRole: "Admin" }},
   {path: "login", component: LoginComponent},
+  {path: "signup", component: SignUpComponent},
   {path: "", redirectTo: "login", pathMatch: "full"}
 ];
 

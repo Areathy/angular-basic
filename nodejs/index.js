@@ -8,8 +8,9 @@ const expressSession = require("express-session");
 const jwt = require("jsonwebtoken");
 var { randomBytes } = require("crypto");
 var helpers = require("./helpers");
-var projects = require("./projects");
+var users = require("./projects");
 var clientlocations = require("./clientlocations");
+var countries = require("./countries");
 
 app.listen(9090, startup);
 function startup() {
@@ -59,33 +60,29 @@ function verifyXsrf(req, res, next) {
 }
 
 //GET api/projects
-app.get("/api/projects", [authenticateToken], projects.getProjects);
+app.get("/api/projects", [authenticateToken], users.getProjects);
 
 //POST api/projects
-app.post(
-  "/api/projects",
-  [authenticateToken, verifyXsrf],
-  projects.postProjects
-);
+app.post("/api/projects", [authenticateToken, verifyXsrf], users.postProjects);
 
 //PUT api/projects
-app.put("/api/projects", [authenticateToken], projects.putProjects);
+app.put("/api/projects", [authenticateToken], users.putProjects);
 
 //DELETE api/projects
-app.delete("/api/projects", [authenticateToken], projects.deleteProjects);
+app.delete("/api/projects", [authenticateToken], users.deleteProjects);
 
 //GET /api/projects/search/:searchby/:searchtext
 app.get(
   "/api/projects/search/:searchby/:searchtext?",
   [authenticateToken],
-  projects.searchProjects
+  users.searchProjects
 );
 
 //GET /api/projects/searchbyprojectid/:ProjectID
 app.get(
   "/api/projects/searchbyprojectid/:ProjectID",
   [authenticateToken],
-  projects.getProjectByProjectID
+  users.getProjectByProjectID
 );
 
 //GET api/clientlocations
@@ -115,6 +112,63 @@ app.delete(
   [authenticateToken],
   clientlocations.deleteClientLocations
 );
+
+//GET api/countries
+app.get("/api/countries", countries.getCountries);
+
+//POST /register
+app.post("/register", function (req, res) {
+  console.log(req.method, req.url);
+  users = JSON.parse(fs.readFileSync(jsonfile)).users;
+  var newuser = {
+    ...req.body,
+    UserName:
+      req.body.personName.firstName + " " + req.body.personName.lastName,
+    Email: req.body.email,
+    Password: req.body.password,
+    Role: "Employee",
+  };
+  newuser.password = "";
+  users.push(newuser);
+  fs.writeFileSync(
+    jsonfile,
+    JSON.stringify({
+      ...JSON.parse(fs.readFileSync(jsonfile)),
+      users: users,
+    }),
+    "utf8"
+  );
+  console.log("Response: ", { ...newuser, Password: "" });
+  //generate jwt token
+  const token = helpers.generateAccessToken({
+    userName: newuser.UserName,
+    email: newuser.Email,
+    role: newuser.Role,
+  });
+
+  //xsrf / csrf
+  var xsrftoken = randomBytes(100).toString("base64");
+  res.header("XSRF-REQUEST-TOKEN", xsrftoken);
+  res.header("Access-Control-Expose-Headers", "XSRF-REQUEST-TOKEN");
+
+  res.send(helpers.toCamel({ ...newuser, token: token, Password: "" }));
+});
+
+//GET /api/getUserByEmail/:Email
+app.get("/api/getUserByEmail/:Email", function (req, res) {
+  console.log(req.method, req.url);
+  console.log(req.params);
+  users = JSON.parse(fs.readFileSync(jsonfile, "utf8")).users;
+  users = users.find((project) => {
+    return project["Email"] == req.params.Email;
+  });
+  console.log("Response: ", users);
+  if (users) {
+    res.send(helpers.toCamel(users));
+  } else {
+    res.send(users);
+  }
+});
 
 //POST /authenticate
 app.post("/authenticate", function (req, res) {
