@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class SignUpComponent implements OnInit
 {
   signUpForm: FormGroup | any = null;
+  genders = ["male", "female"];
 
   constructor() { }
 
@@ -20,7 +21,7 @@ export class SignUpComponent implements OnInit
       email: new FormControl(null),
       mobile: new FormControl(null),
       dateOfBirth: new FormControl(null),
-      gender: new FormControl(null); 
+      gender: new FormControl(null),
     });
   }
 }
