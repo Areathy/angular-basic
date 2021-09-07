@@ -81,6 +81,13 @@ app.get(
   projects.searchProjects
 );
 
+//GET /api/projects/searchbyprojectid/:ProjectID
+app.get(
+  "/api/projects/searchbyprojectid/:ProjectID",
+  [authenticateToken],
+  projects.getProjectByProjectID
+);
+
 //GET api/clientlocations
 app.get(
   "/api/clientlocations",

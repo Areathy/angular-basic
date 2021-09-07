@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { JwtUnAuthorizedInterceptorService } from './jwt-un-authorized-interceptor.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,

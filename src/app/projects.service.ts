@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
 })
 export class ProjectsService
 {
-  urlPrefix: string = "http://localhost:9090";
+  urlPrefix: string = "http://localhost:9090"; //make this as empty ("") if you are using asp.net core [without CORS]
 
   constructor(private httpClient: HttpClient)
   {
@@ -28,6 +28,11 @@ export class ProjectsService
           return data;
         }
       ));
+  }
+
+  getProjectByProjectID(ProjectID: number): Observable<Project>
+  {
+    return this.httpClient.get<Project>(this.urlPrefix + "/api/projects/searchbyprojectid/" + ProjectID, { responseType: "json" });
   }
 
   insertProject(newProject: Project): Observable<Project>
@@ -52,3 +57,4 @@ export class ProjectsService
     return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects/search/" + searchBy + "/" + searchText, { responseType: "json" });
   }
 }
+
