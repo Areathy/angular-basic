@@ -81,7 +81,7 @@
             <label class="col-md-4 col-form-label">Skills:</label>
             <div class="col-md-8" formArrayName="skills">
               <div class="row" *ngFor="let skill of signUpForm.get('skills').controls; let i = index" [formGroupName]="i">
-
+                
                 <div class="col-5">
                   <input type="text" name="skillName" id="skillName" placeholder="Skill Name" formControlName="skillName" class="form-control">
                 </div>
@@ -104,7 +104,7 @@
               <button class="btn btn-primary" type="button" (click)="onAddSkill()">Add Skill</button>
             </div>
 
-
+            
           </div>
 
           {{signUpForm.value | json}}
