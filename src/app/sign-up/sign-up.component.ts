@@ -46,7 +46,7 @@ export class SignUpComponent implements OnInit
   onSubmitClick()
   {
     //Display current form value
-    this.signUpForm["submitted"] = true;
+    (this.signUpForm as any)["submitted"] = true;
     console.log(this.signUpForm);
 
     //setValue
