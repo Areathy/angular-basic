@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<form #newForm="ngForm" novalidate="novalidate">
+<form #newForm="ngForm" novalidate="novalidate" appClientLocationStatusValidator>
   <div class="modal" role="dialog" id="newModal">
     <div class="modal-dialog">
       <div class="modal-content" style="width: 700px">
@@ -84,7 +84,7 @@
             <div class="col-sm-8">
               <input type="text" id="txtNewProjectID" style="width: 130px" class="form-control" placeholder="Project ID"
                 name="ProjectID" [(ngModel)]="newProject.projectID" required="required" pattern="^[0-9]*$"
-                #newProjectID="ngModel" [ngClass]="{
+                appProjectIDUniqueValidator #newProjectID="ngModel" [ngClass]="{
                   'is-invalid':
                     newProjectID.invalid &&
                     (newProjectID.dirty ||
@@ -112,6 +112,14 @@
                     newForm.submitted) &&
                   newProjectID.errors?.pattern
                 ">Project ID should contain numbers only</span>
+
+              <span class="text-danger" *ngIf="
+                  newProjectID.invalid &&
+                  (newProjectID.dirty ||
+                    newProjectID.touched ||
+                    newForm.submitted) &&
+                  newProjectID.errors?.uniqueProjectID
+                ">Duplicate Project ID</span>
             </div>
           </div>
 
@@ -193,7 +201,7 @@
             <div class="col-sm-8">
               <input type="text" id="txtTeamSize" style="width: 150px" class="form-control" placeholder="Team Size"
                 name="TeamSize" [(ngModel)]="newProject.teamSize" pattern="^[0-9]*$" maxlength="7"
-                #newTeamSize="ngModel" [ngClass]="{
+                appTeamSizeValidator="5" #newTeamSize="ngModel" [ngClass]="{
                   'is-invalid':
                     newTeamSize.invalid &&
                     (newTeamSize.dirty ||
@@ -213,6 +221,14 @@
                     newForm.submitted) &&
                   newTeamSize.errors?.required
                 ">Team Size should be a number</span>
+
+              <span class="text-danger" *ngIf="
+                  newTeamSize.invalid &&
+                  (newTeamSize.dirty ||
+                    newTeamSize.touched ||
+                    newForm.submitted) &&
+                  newTeamSize.errors?.divisible
+                ">Team Size should be divisble by 5</span>
             </div>
           </div>
 
@@ -281,6 +297,12 @@
                     newForm.submitted) &&
                   newClientLocationID.errors?.required
                 ">Please client location</span>
+
+              <span class="text-danger" *ngIf="
+                  newForm.invalid &&
+                  (newForm.dirty || newForm.touched || newForm.submitted) &&
+                  newForm.errors?.clientLocationStatus
+                ">Support projects are not allowed at Tokyo</span>
             </div>
           </div>
         </div>
@@ -296,7 +318,7 @@
 </form>
 
 <!-- Edit Project -->
-<form #editForm="ngForm" novalidate="novalidate">
+<form #editForm="ngForm" novalidate="novalidate" appClientLocationStatusValidator>
   <div class="modal" role="dialog" id="editModal">
     <div class="modal-dialog">
       <div class="modal-content" style="width: 700px">
@@ -312,7 +334,7 @@
             <div class="col-sm-8">
               <input type="text" id="txtEditProjectID" style="width: 130px" class="form-control-plain-text"
                 placeholder="Project ID" name="ProjectID" [(ngModel)]="editProject.projectID" disabled="disabled"
-                required="required" pattern="^[0-9]*$" #editProjectID="ngModel" [ngClass]="{
+                required="required" pattern="^[0-9]*$" appProjectIDUniqueValidator #editProjectID="ngModel" [ngClass]="{
                   'is-invalid':
                     editProjectID.invalid &&
                     (editProjectID.dirty ||
@@ -340,6 +362,14 @@
                     editForm.submitted) &&
                   editProjectID.errors?.pattern
                 ">Project ID should contain numbers only</span>
+
+              <span class="text-danger" *ngIf="
+                  editProjectID.invalid &&
+                  (editProjectID.dirty ||
+                    editProjectID.touched ||
+                    editForm.submitted) &&
+                  editProjectID.errors?.uniqueProjectID
+                ">Duplicate Project ID</span>
             </div>
           </div>
 
@@ -419,7 +449,7 @@
             <div class="col-sm-8">
               <input type="text" id="txtEditTeamSize" style="width: 150px" class="form-control" placeholder="Team Size"
                 name="TeamSize" [(ngModel)]="editProject.teamSize" pattern="^[0-9]*$" maxlength="7"
-                #editTeamSize="ngModel" [ngClass]="{
+                appTeamSizeValidator="5" #editTeamSize="ngModel" [ngClass]="{
                   'is-invalid':
                     editTeamSize.invalid &&
                     (editTeamSize.dirty ||
@@ -439,6 +469,14 @@
                     editForm.submitted) &&
                   editTeamSize.errors?.required
                 ">Team Size should be a number</span>
+
+              <span class="text-danger" *ngIf="
+                  editTeamSize.invalid &&
+                  (editTeamSize.dirty ||
+                    editTeamSize.touched ||
+                    editForm.submitted) &&
+                  editTeamSize.errors?.divisible
+                ">Team Size should be divisble by 5</span>
             </div>
           </div>
 
@@ -508,6 +546,12 @@
                     editForm.submitted) &&
                   editClientLocationID.errors?.required
                 ">Please client location</span>
+
+              <span class="text-danger" *ngIf="
+                  editForm.invalid &&
+                  (editForm.dirty || editForm.touched || editForm.submitted) &&
+                  editForm.errors?.clientLocationStatus
+                ">Support projects are not allowed at Tokyo</span>
             </div>
           </div>
         </div>
