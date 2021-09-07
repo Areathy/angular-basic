@@ -14,7 +14,8 @@ export class SignUpComponent implements OnInit
   genders = ["male", "female"];
   countries: Country[] = []
 
-  constructor(private countriesService: CountriesService){
+  constructor(private countriesService: CountriesService)
+  {
   }
 
   ngOnInit()
@@ -22,8 +23,11 @@ export class SignUpComponent implements OnInit
     this.countries = this.countriesService.getCountries();
 
     this.signUpForm = new FormGroup({
-      firstName: new FormControl(null),
-      lastName: new FormControl(null),
+      personName: new FormGroup({
+        firstName: new FormControl(null),
+        lastName: new FormControl(null),
+      }),
+
       email: new FormControl(null),
       mobile: new FormControl(null),
       dateOfBirth: new FormControl(null),
@@ -42,18 +46,18 @@ export class SignUpComponent implements OnInit
   {
     //Display current form value
     //console.log(this.signUpForm.value);
-   
+
     //setValue
-    this.signUpForm.setValue({
-      firstName: "Adam",
-      lastName: "Smith",
-      email: "smith@gmail.com",
-      mobile: "9876543210",
-      dateOfBirth: "2020-01-01",
-      gender: "female",
-      countryID: 4,
-      receiveNewsLetters: true
-    });
+    // this.signUpForm.setValue({
+    //   firstName: "Adam",
+    //   lastName: "Smith",
+    //   email: "smith@gmail.com",
+    //   mobile: "9876543210",
+    //   dateOfBirth: "2020-01-01",
+    //   gender: "male",
+    //   countryID: 3,
+    //   receiveNewsLetters: true
+    // });
 
     //patchValue
     // this.signUpForm.patchValue({
@@ -63,13 +67,13 @@ export class SignUpComponent implements OnInit
     // });
 
     //reset
-    // this.signUpForm.reset();
+    this.signUpForm.reset();
 
     //reset with Parameters
-    // this.signUpForm.reset({
-    //   firstName: "Adam",
-    //   lastName: "Smith",
-    //   email: "smith@gmail.com"
-    // });
+    this.signUpForm.reset({
+      firstName: "Adam",
+      lastName: "Smith",
+      email: "smith@gmail.com"
+    });
   }
 }
