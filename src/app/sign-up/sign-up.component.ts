@@ -2,24 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { CountriesService } from '../countries.service';
 import { Country } from '../country';
+import { CustomValidatorsService } from '../custom-validators.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit
-{
+export class SignUpComponent implements OnInit {
   signUpForm: FormGroup | any = null;
   genders = ["male", "female"];
   countries: Country[] = []
 
-  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder)
-  {
+  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder, private customValidatorsService: CustomValidatorsService) {
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     this.countries = this.countriesService.getCountries();
 
     this.signUpForm = this.formBuilder.group({
@@ -30,21 +28,19 @@ export class SignUpComponent implements OnInit
 
       email: [null, [Validators.required, Validators.email]],
       mobile: [null, [Validators.required, Validators.pattern(/^[789]\d{9}$/)]],
-      dateOfBirth: [null, [Validators.required]],
+      dateOfBirth: [null, [Validators.required, this.customValidatorsService.minimumAgeValidator(18)]],
       gender: [null, [Validators.required]],
       countryID: [null, [Validators.required]],
       receiveNewsLetters: [null],
       skills: this.formBuilder.array([])
     });
 
-    this.signUpForm.valueChanges.subscribe((value: any) =>
-    {
+    this.signUpForm.valueChanges.subscribe((value: any) => {
       //console.log(value);
     });
   }
 
-  onSubmitClick()
-  {
+  onSubmitClick() {
     //Display current form value
     (this.signUpForm as any)["submitted"] = true;
     console.log(this.signUpForm);
@@ -79,8 +75,7 @@ export class SignUpComponent implements OnInit
     // });
   }
 
-  onAddSkill()
-  {
+  onAddSkill() {
     var formGroup = new FormGroup({
       skillName: new FormControl(null, [Validators.required]),
       level: new FormControl(null, [Validators.required])
@@ -89,8 +84,7 @@ export class SignUpComponent implements OnInit
     (<FormArray>this.signUpForm.get("skills")).push(formGroup);
   }
 
-  onRemoveClick(index: number)
-  {
+  onRemoveClick(index: number) {
     (<FormArray>this.signUpForm.get("skills")).removeAt(index);
   }
 }
