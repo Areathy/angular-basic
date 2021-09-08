@@ -75,6 +75,32 @@
           </div>
 
           <div class="form-group form-row">
+            <label for="password" class="col-md-4 col-form-label">Password:</label>
+            <div class="col-md-8">
+              <input type="password" name="password" id="password" placeholder="Password" class="form-control" formControlName="password" [ngClass]="{
+                'is-invalid': signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm.submitted),
+                'is-valid': signUpForm.get('password').valid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm.submitted) }">
+
+              <span class="text-danger" *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm.submitted) && signUpForm.get('password').errors?.required">Password can't be blank</span>
+            </div>
+          </div>
+
+
+          <div class="form-group form-row">
+            <label for="confirmPassword" class="col-md-4 col-form-label">Confirm Password:</label>
+            <div class="col-md-8">
+              <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword" [ngClass]="{
+                'is-invalid': signUpForm.get('confirmPassword').invalid && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched || signUpForm.submitted),
+                'is-valid': signUpForm.get('confirmPassword').valid && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched || signUpForm.submitted) }">
+
+              <span class="text-danger" *ngIf="signUpForm.get('confirmPassword').invalid && (signUpForm.get('confirmPassword').dirty || signUpForm.get('confirmPassword').touched || signUpForm.submitted) && signUpForm.get('confirmPassword').errors?.required">Confirm Password can't be blank</span>
+
+              <span class="text-danger" *ngIf="signUpForm.invalid && (signUpForm.dirty || signUpForm.touched || signUpForm.submitted) && signUpForm.errors?.compareValidator">Password and Confirm Password do not match</span>
+            </div>
+          </div>
+
+
+          <div class="form-group form-row">
             <label class="col-md-4 col-form-label">Gender:</label>
             <div class="col-md-8">
 

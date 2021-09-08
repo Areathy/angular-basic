@@ -3,22 +3,28 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@ang
 import { CountriesService } from '../countries.service';
 import { Country } from '../country';
 import { CustomValidatorsService } from '../custom-validators.service';
+import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit
+{
   signUpForm: FormGroup | any = null;
   genders = ["male", "female"];
-  countries: Country[] = []
+  countries: Country[] = [];
+  registerError: string | null = null;
 
-  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder, private customValidatorsService: CustomValidatorsService) {
+  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder, private customValidatorsService: CustomValidatorsService, private loginService: LoginService, private router: Router)
+  {
   }
 
-  ngOnInit() {
-    this.countries = this.countriesService.getCountries();
+  ngOnInit()
+  {
+    this.countriesService.getCountries();
 
     this.signUpForm = this.formBuilder.group({
       personName: this.formBuilder.group({
@@ -29,20 +35,28 @@ export class SignUpComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       mobile: [null, [Validators.required, Validators.pattern(/^[789]\d{9}$/)]],
       dateOfBirth: [null, [Validators.required, this.customValidatorsService.minimumAgeValidator(18)]],
+      password: [null, [Validators.required]],
+      confirmPassword: [null, [Validators.required]],
       gender: [null, [Validators.required]],
       countryID: [null, [Validators.required]],
       receiveNewsLetters: [null],
       skills: this.formBuilder.array([])
+    }, {
+      validators: [
+        this.customValidatorsService.compareValidator("confirmPassword", "password")
+      ]
     });
 
-    this.signUpForm.valueChanges.subscribe((value: any) => {
+    this.signUpForm.valueChanges.subscribe((value: any) =>
+    {
       //console.log(value);
     });
   }
 
-  onSubmitClick() {
+  onSubmitClick()
+  {
     //Display current form value
-    (this.signUpForm as any)["submitted"] = true;
+    this.signUpForm["submitted"] = true;
     console.log(this.signUpForm);
 
     //setValue
@@ -75,16 +89,18 @@ export class SignUpComponent implements OnInit {
     // });
   }
 
-  onAddSkill() {
+  onAddSkill()
+  {
     var formGroup = new FormGroup({
       skillName: new FormControl(null, [Validators.required]),
-      level: new FormControl(null, [Validators.required])
+      skillLevel: new FormControl(null, [Validators.required])
     });
 
     (<FormArray>this.signUpForm.get("skills")).push(formGroup);
   }
 
-  onRemoveClick(index: number) {
+  onRemoveClick(index: number)
+  {
     (<FormArray>this.signUpForm.get("skills")).removeAt(index);
   }
 }
