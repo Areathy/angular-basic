@@ -70,6 +70,7 @@
                 'is-valid': signUpForm.get('dateOfBirth').valid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched || signUpForm.submitted) }">
 
               <span class="text-danger" *ngIf="signUpForm.get('dateOfBirth').invalid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched || signUpForm.submitted) && signUpForm.get('dateOfBirth').errors?.required">Date of Birth can't be blank</span>
+
               <span class="text-danger" *ngIf="signUpForm.get('dateOfBirth').invalid && (signUpForm.get('dateOfBirth').dirty || signUpForm.get('dateOfBirth').touched || signUpForm.submitted) && signUpForm.get('dateOfBirth').errors?.minAge">Minimum Age must be 18</span>
             </div>
           </div>
@@ -151,10 +152,10 @@
                 </div>
 
                 <div class="col-4">
-                  <select name="level" id="level" formControlName="level" class="form-control" [ngClass]="{
-                    'is-invalid': skill.get('level').invalid && (skill.get('level').dirty || skill.get('level').touched || signUpForm.submitted),
+                  <select name="level" id="level" formControlName="skillLevel" class="form-control" [ngClass]="{
+                    'is-invalid': skill.get('skillLevel').invalid && (skill.get('skillLevel').dirty || skill.get('skillLevel').touched || signUpForm.submitted),
     
-                    'is-valid': skill.get('level').valid && (skill.get('level').dirty || skill.get('level').touched || signUpForm.submitted) }">
+                    'is-valid': skill.get('skillLevel').valid && (skill.get('skillLevel').dirty || skill.get('skillLevel').touched || signUpForm.submitted) }">
                     <option value="null">Please Select</option>
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
@@ -171,14 +172,14 @@
               <button class="btn btn-primary" type="button" (click)="onAddSkill()">Add Skill</button>
             </div>
 
-
           </div>
 
-          {{signUpForm.value | json}}
+          <!-- {{signUpForm.value | json}} -->
         </div>
 
         <div class="card-footer">
           <button class="btn btn-success float-right">Create Account</button>
+          <div class="text-danger">{{registerError}}</div>
         </div>
 
       </div>

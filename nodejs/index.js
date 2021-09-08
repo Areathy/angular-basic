@@ -176,7 +176,7 @@ app.post("/authenticate", function (req, res) {
   users = JSON.parse(fs.readFileSync(jsonfile, "utf8")).users;
   user = users.find(
     (user) =>
-      user.UserName == req.body.UserName && user.Password == req.body.Password
+      user.Email == req.body.UserName && user.Password == req.body.Password
   );
   console.log("Response: ", user);
   //generate jwt token

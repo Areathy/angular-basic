@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@ang
 import { CountriesService } from '../countries.service';
 import { Country } from '../country';
 import { CustomValidatorsService } from '../custom-validators.service';
+import { SignUpViewModel } from '../sign-up-view-model';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 
@@ -24,7 +25,10 @@ export class SignUpComponent implements OnInit
 
   ngOnInit()
   {
-    this.countriesService.getCountries();
+    this.countriesService.getCountries().subscribe((response) =>
+    {
+      this.countries = response;
+    });
 
     this.signUpForm = this.formBuilder.group({
       personName: this.formBuilder.group({
@@ -58,6 +62,21 @@ export class SignUpComponent implements OnInit
     //Display current form value
     this.signUpForm["submitted"] = true;
     console.log(this.signUpForm);
+
+    if (this.signUpForm.valid)
+    {
+      var signUpViewModel = this.signUpForm.value as SignUpViewModel;
+      this.loginService.Register(signUpViewModel).subscribe(
+        (response) =>
+        {
+          this.router.navigate(["tasks"]);
+        },
+        (error) =>
+        {
+          console.log(error);
+          this.registerError = "Unable to submit";
+        });
+    }
 
     //setValue
     // this.signUpForm.setValue({

@@ -76,6 +76,22 @@
       "Email": "raj@gmail.com",
       "Password": "Abc123",
       "Role": "Employee"
+    },
+    {
+      "personName": { "firstName": "Henrietha", "lastName": "Timothy" },
+      "email": "areathy33@gmail.com",
+      "mobile": "9823611922",
+      "dateOfBirth": "1993-02-25",
+      "password": "",
+      "confirmPassword": "12345",
+      "gender": "female",
+      "countryID": "34",
+      "receiveNewsLetters": false,
+      "skills": [{ "skillName": "Enjoyment", "skillLevel": "Expert" }],
+      "UserName": "Henrietha Timothy",
+      "Email": "areathy33@gmail.com",
+      "Password": "12345",
+      "Role": "Employee"
     }
   ],
   "clientLocations": [
