@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit
         lastName: [null, [Validators.required, Validators.minLength(2)]],
       }),
 
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email], [this.customValidatorsService.DuplicateEmailValidator()], { updateOn: 'blur' }],
       mobile: [null, [Validators.required, Validators.pattern(/^[789]\d{9}$/)]],
       dateOfBirth: [null, [Validators.required, this.customValidatorsService.minimumAgeValidator(18)]],
       password: [null, [Validators.required]],
@@ -45,11 +45,12 @@ export class SignUpComponent implements OnInit
       countryID: [null, [Validators.required]],
       receiveNewsLetters: [null],
       skills: this.formBuilder.array([])
-    }, {
-      validators: [
-        this.customValidatorsService.compareValidator("confirmPassword", "password")
-      ]
-    });
+    },
+      {
+        validators: [
+          this.customValidatorsService.compareValidator("confirmPassword", "password")
+        ]
+      });
 
     this.signUpForm.valueChanges.subscribe((value: any) =>
     {
@@ -65,8 +66,8 @@ export class SignUpComponent implements OnInit
 
     if (this.signUpForm.valid)
     {
-      var signUpViewModel = this.signUpForm.value as SignUpViewModel;
-      this.loginService.Register(signUpViewModel).subscribe(
+      var signUpVieModel = this.signUpForm.value as SignUpViewModel;
+      this.loginService.Register(signUpVieModel).subscribe(
         (response) =>
         {
           this.router.navigate(["tasks"]);
