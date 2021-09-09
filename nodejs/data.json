@@ -25,6 +25,19 @@
         "clientLocationID": 2,
         "clientLocationName": "London"
       }
+    },
+    {
+      "projectID": 3,
+        "projectName": "Enjoyment Tracker",
+        "dateOfStart": "2021-03-15",
+        "teamSize": 5,
+        "Active": true,
+        "status": "Support",
+        "clientLocationID": 34,
+        "clientLocation": {
+          "clientLocationID": 34,
+          "clientLocationName": "Canada"
+        }
     }
   ],
   "roles": [
