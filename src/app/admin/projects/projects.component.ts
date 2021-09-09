@@ -91,8 +91,9 @@ export class ProjectsComponent implements OnInit
     }
   }
 
-  onEditClick(event: any, index: number)
+  onEditClick(event: {event: Event, i: number}, index: number)
   {
+    console.log(event);
     this.editForm.resetForm();
     setTimeout(() =>
     {
