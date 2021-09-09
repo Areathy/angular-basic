@@ -5,6 +5,7 @@ import { ClientLocation } from '../../client-location';
 import { ClientLocationsService } from '../../client-locations.service';
 import { NgForm } from '@angular/forms';
 import * as $ from "jquery";
+import { ProjectComponent } from '../project/project.component';
 
 @Component({
   selector: 'app-projects',
@@ -180,5 +181,11 @@ export class ProjectsComponent implements OnInit
       {
         console.log(error);
       });
+  }
+
+  @ViewChild("prj") prj!: ProjectComponent;
+
+  onHideShowDetails(event: any) {
+    this.prj.toggleDetails();
   }
 }
