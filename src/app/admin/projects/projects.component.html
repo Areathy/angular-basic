@@ -3,21 +3,21 @@
   <i class="fa fa-circle-o-notch fa-spin" style="font-size:34px" *ngIf="showLoading"></i>
 </h1>
 <div class="row">
-  <div class="col-xl-9 mx-auto">
+  <div class="col-xl-12 mx-auto">
     <div class="form-group form-row">
 
-      <div class="col-1">
+      <div class="col-2">
         <button class="btn btn-primary" data-toggle="modal" data-target="#newModal" (click)="onNewClick($event)">Create
           Project</button>
       </div>
 
-      <div class="col-1">
+      <div class="col-2">
         <button class="btn btn-secondary" (click)="onHideShowDetails($event)">Hide/Show Details</button>
       </div>
 
       <label for="drpSearchBy" class="col-form-label col-2 text-right">Search by:</label>
 
-      <div class="col-3">
+      <div class="col-2">
         <select class="form-control" id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy">
           <option value="ProjectID">Project ID</option>
           <option value="ProjectName">Project Name</option>
@@ -28,7 +28,7 @@
 
       <label for="textSearchText" class="col-form-label col-1 text-right">Search:</label>
 
-      <div class="col-4">
+      <div class="col-3">
         <div class="input-group">
           <input type="text" class="form-control" id="txtSearchText" name="SearchText" [(ngModel)]="searchText">
           <div class="input-group-append" (click)="onSearchClick()">
@@ -42,7 +42,6 @@
 
   <div class="col-xl-12 mx-auto">
     <div class="row">
-
       <div class="col-md-4" *ngFor="let project of projects; let i = index">
 
         <app-project #prj [currentProject]="project" [recordIndex]="i"
@@ -51,7 +50,6 @@
         </app-project>
 
       </div>
-
     </div>
   </div>
 </div>

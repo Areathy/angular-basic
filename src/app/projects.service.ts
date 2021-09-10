@@ -11,10 +11,14 @@ export class ProjectsService
 {
   urlPrefix: string = "http://localhost:9090"; //make this as empty ("") if you are using asp.net core [without CORS]
 
-  constructor(private httpClient: HttpClient)
-  {
+  constructor(private httpClient: HttpClient) {
   }
 
+  hideDetails: boolean = false;
+  toggleDetails() {
+    this.hideDetails = !this.hideDetails;
+  }
+  
   getAllProjects(): Observable<Project[]>
   {
     return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects", { responseType: "json" })
