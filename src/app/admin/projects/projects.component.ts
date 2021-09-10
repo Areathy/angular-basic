@@ -183,13 +183,14 @@ export class ProjectsComponent implements OnInit
       });
   }
 
-  @ViewChildren("prj") prj!: QueryList <ProjectComponent>;
+  @ViewChildren("prj") prj!: QueryList<ProjectComponent>;
 
   onHideShowDetails(event: any) {
     // this.prj.toggleDetails();
     let projs = this.prj.toArray();
-    for (let i= 0; i<projs.length;  i++) {
-      projs[i].toggleDetails;
+    for (let i = 0; i < projs.length;  i++) {
+      projs[i].toggleDetails();
     }
   }
+  
 }
