@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ContentChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/project';
 import { ProjectsService } from 'src/app/projects.service';
+import { CheckBoxPrinterComponent } from '../check-box-printer/check-box-printer.component';
 
 @Component({
   selector: 'app-project',
@@ -39,6 +40,20 @@ export class ProjectComponent implements OnInit {
 
   ngOnDestroy(){
     this.MySubscription.unsubscribe();
+  }
+
+  @ContentChild("selectionBox") selectionBox!: CheckBoxPrinterComponent;
+
+  isAllCheckedChange(b: boolean)
+  {
+    if (b)
+    {
+        this.selectionBox.check();
+    }
+    else
+    {
+        this.selectionBox.unCheck();
+    }
   }
 
 }
