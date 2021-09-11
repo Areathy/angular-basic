@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Project } from 'src/app/project';
 import { ProjectsService } from 'src/app/projects.service';
 
@@ -15,12 +16,15 @@ export class ProjectComponent implements OnInit {
   @Output() editClick = new EventEmitter();
   @Output() deleteClick = new EventEmitter();
 
+  MySubscription!: Subscription;
+
   hideDetails: boolean = false;
 
   constructor(public projectsService: ProjectsService) { }
 
   ngOnInit(): void {
-    this.projectsService.MyObservable.subscribe((hide) => {
+    this.MySubscription = 
+    this.projectsService.MySubect.subscribe((hide) => {
       this.hideDetails = hide;
     });
   }
@@ -31,6 +35,10 @@ export class ProjectComponent implements OnInit {
 
   onDeleteClick(event: any, i: number) {
     this.deleteClick.emit({ event, i });
+  }
+
+  ngOnDestroy(){
+    this.MySubscription.unsubscribe();
   }
 
 }
