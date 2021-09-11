@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoginViewModel } from '../login-view-model';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,13 @@ export class LoginComponent implements OnInit
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit(){}
+  ngOnInit(){
+    setTimeout(() => {
+      this.userName.nativeElement.focus();
+    }, 500);
+  }
+
+  @ViewChild("userName") userName!: ElementRef;
 
   onClickLogin(event: any)
   {
