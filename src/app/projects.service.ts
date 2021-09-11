@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { Project } from './project';
 import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectsService
-{
-  urlPrefix: string = "http://localhost:9090"; //make this as empty ("") if you are using asp.net core [without CORS]
+export class ProjectsService {
+
+  urlPrefix: string = "http://localhost:9090"; 
+
+  public MyObservable: Observable<boolean>;
+  private MyObservers: Observer<boolean> [] = [];
 
   constructor(private httpClient: HttpClient) {
+    this.MyObservable = Observable.create((observer:Observer<boolean>) => {
+      this.MyObservers.push(observer);
+    });
   }
 
   hideDetails: boolean = false;
   toggleDetails() {
     this.hideDetails = !this.hideDetails;
+    for(let i=0; i<this.MyObservers.length; i++){
+      this.MyObservers[i].next(this.hideDetails);
+    }
   }
-  
+
   getAllProjects(): Observable<Project[]>
   {
     return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects", { responseType: "json" })
