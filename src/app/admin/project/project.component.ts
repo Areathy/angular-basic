@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ContentChild } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ContentChild, ContentChildren, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/project';
 import { ProjectsService } from 'src/app/projects.service';
@@ -42,17 +42,24 @@ export class ProjectComponent implements OnInit {
     this.MySubscription.unsubscribe();
   }
 
-  @ContentChild("selectionBox") selectionBox!: CheckBoxPrinterComponent;
+  @ContentChildren("selectionBox") selectionBoxes!: QueryList<CheckBoxPrinterComponent>;
 
   isAllCheckedChange(b: boolean)
   {
+    let selectionBox = this.selectionBoxes.toArray();
     if (b)
     {
-        this.selectionBox.check();
+      for (let i = 0; i < selectionBox.length; i++)
+      {
+        selectionBox[i].check();
+      }
     }
     else
     {
-        this.selectionBox.unCheck();
+      for (let i = 0; i < selectionBox.length; i++)
+      {
+        selectionBox[i].unCheck();
+      }
     }
   }
 

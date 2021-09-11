@@ -23,7 +23,7 @@
 
       <label for="drpSearchBy" class="col-form-label col-1 text-right">Search by:</label>
 
-      <div class="col-3">
+      <div class="col-2">
         <select class="form-control" id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy">
           <option value="ProjectID">Project ID</option>
           <option value="ProjectName">Project Name</option>
@@ -54,6 +54,7 @@
           (editClick)="onEditClick($event, i)"
           (deleteClick)="onDeleteClick($event, i)">
           <app-check-box-printer #selectionBox></app-check-box-printer>
+          <app-check-box-printer #selectionBox></app-check-box-printer> 
         </app-project>
       </div>
     </div>
