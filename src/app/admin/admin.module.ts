@@ -11,6 +11,7 @@ import { TeamSizeValidatorDirective } from '../team-size-validator.directive';
 import { ClientLocationStatusValidatorDirective } from '../client-location-status-validator.directive';
 import { ProjectIDUniqueValidatorDirective } from '../project-idunique-validator.directive';
 import { CheckBoxPrinterComponent } from '../admin/check-box-printer/check-box-printer.component';
+import { NumberToWordsPipe } from '../number-to-words.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CheckBoxPrinterComponent } from '../admin/check-box-printer/check-box-p
     ClientLocationStatusValidatorDirective,
     ProjectIDUniqueValidatorDirective,
     ProjectComponent,
-    CheckBoxPrinterComponent
+    CheckBoxPrinterComponent,
+    NumberToWordsPipe
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { CheckBoxPrinterComponent } from '../admin/check-box-printer/check-box-p
     ClientLocationStatusValidatorDirective,
     ProjectIDUniqueValidatorDirective,
     ProjectComponent,
-    CheckBoxPrinterComponent
+    CheckBoxPrinterComponent,
+    NumberToWordsPipe
   ],
   providers: [
     DashboardService
