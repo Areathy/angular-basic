@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ContentChild, ContentChildren, QueryList, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ContentChild, ContentChildren, QueryList, SimpleChanges, OnChanges, DoCheck } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/project';
 import { ProjectsService } from 'src/app/projects.service';
@@ -9,7 +9,7 @@ import { CheckBoxPrinterComponent } from '../check-box-printer/check-box-printer
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnChanges, OnInit {
+export class ProjectComponent implements OnChanges, OnInit, DoCheck {
 
   @Input("currentProject") project!: Project ;
   @Input("recordIndex") i!: number;
@@ -46,6 +46,11 @@ export class ProjectComponent implements OnChanges, OnInit {
     this.projectsService.MySubect.subscribe((hide) => {
       this.hideDetails = hide;
     });
+  }
+
+  ngDoCheck()
+  {
+    console.info("--------------ngDoCheck called");
   }
 
   onEditClick(event: any, i: number) {
