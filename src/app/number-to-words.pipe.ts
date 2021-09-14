@@ -49,7 +49,7 @@ export class NumberToWordsPipe implements PipeTransform
     const chunk = (n : any) => (xs:any):any =>
       isEmpty(xs) ? [] : [take(n)(xs), ...chunk(n)(drop(n)(xs))];
 
-    let makeGroup = ([ones, tens, huns]:[ones:any, tens:any, huns:any]) =>
+    let makeGroup = ([ones, tens, huns]:any) =>
     {
       return [
         num(huns) === 0 ? '' : a[huns] + ' Hundred ',

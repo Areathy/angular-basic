@@ -12,6 +12,7 @@ import { ClientLocationStatusValidatorDirective } from '../client-location-statu
 import { ProjectIDUniqueValidatorDirective } from '../project-idunique-validator.directive';
 import { CheckBoxPrinterComponent } from '../admin/check-box-printer/check-box-printer.component';
 import { NumberToWordsPipe } from '../number-to-words.pipe';
+import { FilterPipe } from '../filter.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NumberToWordsPipe } from '../number-to-words.pipe';
     ProjectIDUniqueValidatorDirective,
     ProjectComponent,
     CheckBoxPrinterComponent,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { NumberToWordsPipe } from '../number-to-words.pipe';
     ProjectIDUniqueValidatorDirective,
     ProjectComponent,
     CheckBoxPrinterComponent,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    FilterPipe
   ],
   providers: [
     DashboardService
