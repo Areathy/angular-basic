@@ -13,6 +13,7 @@ import { ProjectIDUniqueValidatorDirective } from '../project-idunique-validator
 import { CheckBoxPrinterComponent } from '../admin/check-box-printer/check-box-printer.component';
 import { NumberToWordsPipe } from '../number-to-words.pipe';
 import { FilterPipe } from '../filter.pipe';
+import { PagingPipe } from '../paging.pipe';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FilterPipe } from '../filter.pipe';
     ProjectComponent,
     CheckBoxPrinterComponent,
     NumberToWordsPipe,
-    FilterPipe
+    FilterPipe,
+    PagingPipe
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { FilterPipe } from '../filter.pipe';
     ProjectComponent,
     CheckBoxPrinterComponent,
     NumberToWordsPipe,
-    FilterPipe
+    FilterPipe,
+    PagingPipe
   ],
   providers: [
     DashboardService

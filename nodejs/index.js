@@ -174,7 +174,7 @@ app.get("/api/getUserByEmail/:Email", function (req, res) {
 app.post("/authenticate", function (req, res) {
   console.log(req.method, req.url);
   users = JSON.parse(fs.readFileSync(jsonfile, "utf8")).users;
-  user = users.find(
+  const user = users.find(
     (user) =>
       user.UserName == req.body.UserName && user.Password == req.body.Password
   );

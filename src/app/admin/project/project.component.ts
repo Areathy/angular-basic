@@ -24,7 +24,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
   constructor(public projectsService: ProjectsService) { }
 
   ngOnChanges(simpleChanges: SimpleChanges) {
-    console.info("--------------ngOnChanges called");
+    // console.info("--------------ngOnChanges called");
 
     for (let propName in simpleChanges)
     {
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
   }
 
   ngOnInit(): void {
-    console.info("--------------ngOnInit called");
+    // console.info("--------------ngOnInit called");
     this.MySubscription = 
     this.projectsService.MySubect.subscribe((hide) => {
       this.hideDetails = hide;
@@ -49,25 +49,25 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
   }
 
   ngDoCheck() {
-    console.info("--------------ngDoCheck called");
+    // console.info("--------------ngDoCheck called");
   }
 
   ngAfterContentInit() {
-    console.info("--------------ngAfterContentInit called");
+    // console.info("--------------ngAfterContentInit called");
     console.log(this.selectionBoxes.toArray());
   }
 
   ngAfterContentChecked() {
-    console.info("--------------ngAfterContentChecked called");
+    // console.info("--------------ngAfterContentChecked called");
   }
 
   ngAfterViewInit() {
-    console.info("--------------ngAfterViewInit called");
+    // console.info("--------------ngAfterViewInit called");
     console.log(this.tbl);
   }
 
   ngAfterViewChecked() {
-    console.info("--------------ngAfterViewChecked called");
+    // console.info("--------------ngAfterViewChecked called");
   }
 
   @ViewChild("tbl") tbl! : ElementRef;
@@ -81,7 +81,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
   }
 
   ngOnDestroy(){
-    console.info("--------------ngOnDestroy called");
+    // console.info("--------------ngOnDestroy called");
     this.MySubscription.unsubscribe();
   }
 

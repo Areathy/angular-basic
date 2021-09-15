@@ -37,9 +37,9 @@ export class NumberToWordsPipe implements PipeTransform
       'Quintillion', 'Sextillion', 'Septillion', 'Octillion', 'Nonillion'
     ];
 
-    const arr = (x: any) => Array.from(x);
-    const num = (x: any) => Number(x) || 0;
-    const str = (x: any) => String(x);
+    const arr = (x: []) => Array.from(x);
+    const num = (x: number | string) => Number(x) || 0;
+    const str = (x: string | number) => String(x);
     const isEmpty = (xs: any) => xs.length === 0;
     const take = (n : any) => (xs: any) => xs.slice(0, n);
     const drop = (n : any) => (xs: any) => xs.slice(n);
