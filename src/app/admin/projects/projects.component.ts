@@ -8,6 +8,7 @@ import * as $ from "jquery";
 import { ProjectComponent } from '../project/project.component';
 import { FilterPipe } from 'src/app/filter.pipe';
 import { SearchByType, ProjectObjectType } from './types';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { SearchByType, ProjectObjectType } from './types';
 })
 export class ProjectsComponent implements OnInit {
   projects: ProjectObjectType[] = [];
-  clientLocations: ClientLocation[] = [];
+  clientLocations!: Observable<ClientLocation[]>;
   showLoading: boolean = true;
 
   newProject: Project = new Project();
@@ -48,13 +49,8 @@ export class ProjectsComponent implements OnInit {
 
       }
     );
-
-    this.clientLocationsService.getClientLocations().subscribe(
-      (response) =>
-      {
-        this.clientLocations = response;
-      }
-    );
+      this.clientLocations =
+    this.clientLocationsService.getClientLocations();
   }
 
   calculateNoOfPages() {
@@ -216,7 +212,7 @@ export class ProjectsComponent implements OnInit {
   onSearchClick() {
     // this.projectsService.SearchProjects(this.searchBy, this.searchText).subscribe(
     //   (response: Project[]) =>
-    //   {
+    //   { 
     //     this.projects = response;
     //   },
     //   (error) => 
