@@ -28,6 +28,16 @@
           <div class="card-footer text-right">
             <!-- <span class="text-danger mr-3">{{loginError}}&nbsp;</span> -->
             <button class="btn btn-primary" (click)="onClickLogin($event)">Login</button>
+
+            <div *appRepeater="5; let i" >
+              <a class="btn btn-primary" data-toggle="collapse" [href]=" '#collapse' + i " role="button">Show Details</a>
+              <div class="collapse" [id]=" 'collapse' + i">
+                <div class="card card-body">
+                  Actual details here
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
