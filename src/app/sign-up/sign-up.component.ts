@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit
       this.loginService.Register(signUpVieModel).subscribe(
         (response) =>
         {
-          this.router.navigate(["tasks"]);
+          this.router.navigate(["/employee","tasks"]);
         },
         (error) =>
         {

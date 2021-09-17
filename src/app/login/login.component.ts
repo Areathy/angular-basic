@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit
     this.loginService.Login(this.loginViewModel).subscribe(
       (response) =>
       {
-        this.router.navigateByUrl("/dashboard");
+        this.router.navigate(["/admin", "dashboard"]);
       },
       (error) =>
       {

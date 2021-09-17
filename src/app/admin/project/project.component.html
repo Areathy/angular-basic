@@ -39,6 +39,6 @@
       <button class="btn btn-info" (click)="onEditClick($event, i)" data-toggle="modal" data-target="#editModal">Edit</button>&nbsp;
       <button class="btn btn-warning" (click)="onDeleteClick($event, i)" data-toggle="modal" data-target="#deleteModal">Delete</button>
 
-      <a class="btn btn-primary" [routerLink]=" [ '/projects', 'view', project.projectID] ">Learn More</a>
+      <a class="btn btn-primary" [routerLink]=" [ '/admin', 'projects', 'view', project.projectID] ">Learn More</a>
     </div>
   </div>
