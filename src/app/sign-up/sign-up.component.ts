@@ -62,7 +62,7 @@ export class SignUpComponent implements OnInit
   {
     //Display current form value
     this.signUpForm["submitted"] = true;
-    console.log(this.signUpForm);
+    // console.log(this.signUpForm);
 
     if (this.signUpForm.valid)
     {

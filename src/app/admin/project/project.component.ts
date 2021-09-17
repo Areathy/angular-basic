@@ -31,7 +31,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
       let chng = simpleChanges[propName];
       let cur = JSON.stringify(chng.currentValue);
       let prev = JSON.stringify(chng.previousValue);
-      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+      // console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
     }
 
     if (simpleChanges["project"])
@@ -54,7 +54,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
 
   ngAfterContentInit() {
     // console.info("--------------ngAfterContentInit called");
-    console.log(this.selectionBoxes.toArray());
+    // console.log(this.selectionBoxes.toArray());
   }
 
   ngAfterContentChecked() {
@@ -63,7 +63,7 @@ export class ProjectComponent implements OnChanges, OnInit, DoCheck, AfterConten
 
   ngAfterViewInit() {
     // console.info("--------------ngAfterViewInit called");
-    console.log(this.tbl);
+    // console.log(this.tbl);
   }
 
   ngAfterViewChecked() {
