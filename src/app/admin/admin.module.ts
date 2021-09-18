@@ -15,7 +15,7 @@ import { NumberToWordsPipe } from '../number-to-words.pipe';
 import { FilterPipe } from '../filter.pipe';
 import { PagingPipe } from '../paging.pipe';
 import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
-import { RouterModule } from '@angular/router';
+import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    AdminRoutingModule
   ],
   exports: [
     DashboardComponent,
