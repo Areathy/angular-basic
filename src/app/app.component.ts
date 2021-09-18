@@ -20,6 +20,6 @@ export class AppComponent
 
   onClickSearch()
   {
-    console.log(this.loginService.currentUserName);
+    // console.log(this.loginService.currentUserName);
   }
 }
