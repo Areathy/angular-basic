@@ -15,7 +15,9 @@ const routes: Routes = [
 
 @NgModule({
   //, enableTracing: true; will show the browser console for the router events
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: true })],
+  // imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true})],
+
   exports: [RouterModule]
 })
 export class AppRoutingModule {

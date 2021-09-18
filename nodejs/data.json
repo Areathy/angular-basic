@@ -4,7 +4,7 @@
       "projectID": 1,
       "projectName": "Bug Tracking System",
       "dateOfStart": "2023-05-07",
-      "teamSize": "6510705",
+      "teamSize": 6,
       "active": true,
       "status": "In Force",
       "clientLocationID": 1,
@@ -25,29 +25,6 @@
         "clientLocationID": 2,
         "clientLocationName": "London"
       }
-    },
-    {
-      "projectID": 3,
-      "projectName": "Enjoyment Tracker",
-      "dateOfStart": "2021-03-15",
-      "teamSize": 5,
-      "Active": true,
-      "status": "Support",
-      "clientLocationID": 34,
-      "clientLocation": {
-        "clientLocationID": 34,
-        "clientLocationName": "Canada"
-      }
-    },
-    {
-      "projectID": "7",
-      "projectName": "Antony Rommy",
-      "dateOfStart": "2021-09-15",
-      "teamSize": "55",
-      "active": true,
-      "status": "Support",
-      "clientLocationID": "3",
-      "clientLocation": { "clientLocationID": 0, "clientLocationName": null }
     }
   ],
   "roles": [
@@ -98,22 +75,6 @@
       "UserName": { "firstName": "raj", "lastName": "kumar" },
       "Email": "raj@gmail.com",
       "Password": "Abc123",
-      "Role": "Employee"
-    },
-    {
-      "personName": { "firstName": "Henrietha", "lastName": "Timothy" },
-      "email": "areathy33@gmail.com",
-      "mobile": "9823611922",
-      "dateOfBirth": "1990-09-14",
-      "password": "",
-      "confirmPassword": "abc",
-      "gender": "female",
-      "countryID": "34",
-      "receiveNewsLetters": null,
-      "skills": [{ "skillName": "Enjoyment", "skillLevel": "Expert" }],
-      "UserName": "Henrietha Timothy",
-      "Email": "areathy33@gmail.com",
-      "Password": "abc",
       "Role": "Employee"
     }
   ],

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RouterLoggerService } from './router-logger.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -10,13 +12,27 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AppComponent
 {
-  constructor(public loginService: LoginService, private domSanitizer: DomSanitizer) {}
+  constructor(public loginService: LoginService, private domSanitizer: DomSanitizer,
+    private routerLoggerService: RouterLoggerService, private router: Router) {}
 
   // myProperty = "<svg>Henrietha<svg>";
   // myProperty = "<script>alert(document.cookie)</script>";
   // myProperty = this.domSanitizer.bypassSecurityTrustHtml("<iframe src='http://www.lipsum.com'></iframe>");
   // myProperty = this.domSanitizer.bypassSecurityTrustUrl("javascript:window.open('http://www.google.com')");
   // myProperty = this.domSanitizer.bypassSecurityTrustResourceUrl("https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg");
+
+  ngOnInit() {
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd)
+      {
+        let userName = (this.loginService.currentUserName)? this.loginService.currentUserName : "anonymous";
+        
+        let logMsg = new Date().toLocaleString() + ": " + userName + " navigates to " + event.url;
+
+        this.routerLoggerService.log(logMsg).subscribe();
+      }
+    });
+  }
 
   onClickSearch()
   {
