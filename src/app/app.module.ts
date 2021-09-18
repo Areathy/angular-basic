@@ -11,16 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { JwtUnAuthorizedInterceptorService } from './jwt-un-authorized-interceptor.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { TasksComponent } from './tasks/tasks.component';
 import { AlertDirective } from './alert.directive';
 import { RepeaterDirective } from './repeater.directive';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    TasksComponent,
     AlertDirective,
     RepeaterDirective
   ],
@@ -29,6 +28,7 @@ import { RepeaterDirective } from './repeater.directive';
     AppRoutingModule,
     HttpClientModule,
     AdminModule,
+    EmployeeModule,
     FormsModule,
     ReactiveFormsModule,
     JwtModule.forRoot({

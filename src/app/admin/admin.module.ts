@@ -16,6 +16,7 @@ import { FilterPipe } from '../filter.pipe';
 import { PagingPipe } from '../paging.pipe';
 import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
+import { EmployeeRoutingModule } from '../employee/employee-routing/employee-routing.module';
 
 
 @NgModule({
