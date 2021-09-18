@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { RouterLoggerService } from './router-logger.service';
-import { NavigationEnd, Router } from '@angular/router';
+// import { RouterLoggerService } from './router-logger.service';
+// import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +12,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent
 {
-  constructor(public loginService: LoginService, private domSanitizer: DomSanitizer,
-    private routerLoggerService: RouterLoggerService, private router: Router) {}
+  constructor(public loginService: LoginService, private domSanitizer: DomSanitizer) {}
 
   // myProperty = "<svg>Henrietha<svg>";
   // myProperty = "<script>alert(document.cookie)</script>";
@@ -22,16 +21,16 @@ export class AppComponent
   // myProperty = this.domSanitizer.bypassSecurityTrustResourceUrl("https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg");
 
   ngOnInit() {
-    this.router.events.subscribe((event: any) => {
-      if (event instanceof NavigationEnd)
-      {
-        let userName = (this.loginService.currentUserName)? this.loginService.currentUserName : "anonymous";
+    // this.router.events.subscribe((event: any) => {
+    //   if (event instanceof NavigationEnd)
+    //   {
+    //     let userName = (this.loginService.currentUserName)? this.loginService.currentUserName : "anonymous";
         
-        let logMsg = new Date().toLocaleString() + ": " + userName + " navigates to " + event.url;
+    //     let logMsg = new Date().toLocaleString() + ": " + userName + " navigates to " + event.url;
 
-        this.routerLoggerService.log(logMsg).subscribe();
-      }
-    });
+    //     this.routerLoggerService.log(logMsg).subscribe();
+    //   }
+    // });
   }
 
   onClickSearch()

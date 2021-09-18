@@ -6,25 +6,26 @@ import { CustomValidatorsService } from '../custom-validators.service';
 import { SignUpViewModel } from '../sign-up-view-model';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import { CanComponentDeactivate } from '../can-deactivate-guard.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit
-{
+export class SignUpComponent implements OnInit, CanComponentDeactivate {
   signUpForm: FormGroup | any = null;
   genders = ["male", "female"];
   countries: Country[] = [];
   registerError: string | null = null;
 
-  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder, private customValidatorsService: CustomValidatorsService, private loginService: LoginService, private router: Router)
-  {
+  canLeave: boolean = true;
+
+  constructor(private countriesService: CountriesService, private formBuilder: FormBuilder, 
+    private customValidatorsService: CustomValidatorsService, private loginService: LoginService, private router: Router) {
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     this.countriesService.getCountries().subscribe((response) =>
     {
       this.countries = response;
@@ -55,11 +56,11 @@ export class SignUpComponent implements OnInit
     this.signUpForm.valueChanges.subscribe((value: any) =>
     {
       //console.log(value);
+      this.canLeave = false;
     });
   }
 
-  onSubmitClick()
-  {
+  onSubmitClick() {
     //Display current form value
     this.signUpForm["submitted"] = true;
     // console.log(this.signUpForm);
@@ -70,6 +71,7 @@ export class SignUpComponent implements OnInit
       this.loginService.Register(signUpVieModel).subscribe(
         (response) =>
         {
+          this.canLeave = false;
           this.router.navigate(["/employee","tasks"]);
         },
         (error) =>
@@ -109,8 +111,7 @@ export class SignUpComponent implements OnInit
     // });
   }
 
-  onAddSkill()
-  {
+  onAddSkill() {
     var formGroup = new FormGroup({
       skillName: new FormControl(null, [Validators.required]),
       skillLevel: new FormControl(null, [Validators.required])
@@ -119,8 +120,7 @@ export class SignUpComponent implements OnInit
     (<FormArray>this.signUpForm.get("skills")).push(formGroup);
   }
 
-  onRemoveClick(index: number)
-  {
+  onRemoveClick(index: number) {
     (<FormArray>this.signUpForm.get("skills")).removeAt(index);
   }
 }
