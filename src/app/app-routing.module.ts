@@ -8,16 +8,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
 
   { path: "", redirectTo: "login", pathMatch: "full" },
-  { path: "login", component: LoginComponent },
-  { path: "signup", component: SignUpComponent, canDeactivate: [CanDeactivateGuardService] },
-  { path: "about", component: AboutComponent },
-
+  { path: "login", component: LoginComponent, data: { linkIndex: 2 } },
+  { path: "signup", component: SignUpComponent, canDeactivate: [ CanDeactivateGuardService ], data: { linkIndex: 3 } },
+  { path: "about", component: AboutComponent, data: { linkIndex: 1 } }
 ];
 
 @NgModule({
   //, enableTracing: true; will show the browser console for the router events
-  // imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: true })],
-  imports: [RouterModule.forRoot(routes, { useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false })],
+  // imports: [RouterModule.forRoot(routes, { useHash: true})],
 
   exports: [RouterModule]
 })
