@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from "./admin/about/about.component";
 import { CanDeactivateGuardService } from './guards/can-deactivate-guard.service';
 import { LoginComponent } from './components/login/login.component';
@@ -16,8 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   //, enableTracing: true; will show the browser console for the router events
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false })],
-  // imports: [RouterModule.forRoot(routes, { useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, preloadingStrategy: PreloadAllModules })],
 
   exports: [RouterModule]
 })
