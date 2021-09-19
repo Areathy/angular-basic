@@ -15,10 +15,12 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AlertDirective } from './directives/alert.directive';
 import { RepeaterDirective } from './directives/repeater.directive';
 import { EmployeeModule } from './employee/employee.module';
+import { AboutComponent } from './admin/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     LoginComponent,
     SignUpComponent,
     AlertDirective,
@@ -29,7 +31,6 @@ import { EmployeeModule } from './employee/employee.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule,
     EmployeeModule,
     FormsModule,
     ReactiveFormsModule,
