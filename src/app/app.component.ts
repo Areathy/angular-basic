@@ -3,14 +3,14 @@ import { LoginService } from './login.service';
 import { DomSanitizer } from '@angular/platform-browser';
 // import { RouterLoggerService } from './router-logger.service';
 // import { NavigationEnd, Router } from '@angular/router';
-import { fadeAnimation } from './my-animations';
+import { fadeAnimation, slideUpAnimation } from './my-animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [fadeAnimation]
+  animations: [slideUpAnimation]
 })
 export class AppComponent
 {
