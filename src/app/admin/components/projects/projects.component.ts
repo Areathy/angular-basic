@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { ProjectsService } from "../../projects.service";
-import { Project } from '../../project';
-import { ClientLocation } from '../../client-location';
-import { ClientLocationsService } from '../../client-locations.service';
+import { ProjectsService } from "../../../services/projects.service";
+import { Project } from '../../../models/project';
+import { ClientLocation } from '../../../models/client-location';
+import { ClientLocationsService } from '../../../services/client-locations.service';
 import { NgForm } from '@angular/forms';
 import * as $ from "jquery";
 import { ProjectComponent } from '../project/project.component';
-import { FilterPipe } from 'src/app/filter.pipe';
+import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { SearchByType, ProjectObjectType } from './types';
 import { Observable } from 'rxjs';
 

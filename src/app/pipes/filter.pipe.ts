@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchByType, ProjectObjectType } from './admin/projects/types';
+import { SearchByType, ProjectObjectType } from '../admin/components/projects/types';
 
 
 @Pipe({
