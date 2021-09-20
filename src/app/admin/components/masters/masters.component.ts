@@ -51,7 +51,13 @@ export class MastersComponent implements OnInit {
 
         var viewContainterRef = componentLoadersArray[this.tabs.length - 1].viewContainerRef;
 
-        viewContainterRef.createComponent(componentFactory);
+        var componentRef = viewContainterRef.createComponent(componentFactory);
+
+        if (clickedMasterMenuItem.component.name == "CountriesComponent")
+        {
+          var componentInstance = componentRef.instance as CountriesComponent;
+          componentInstance.message = "Hello to Countries";
+        }
       }, 100);
     }
   }

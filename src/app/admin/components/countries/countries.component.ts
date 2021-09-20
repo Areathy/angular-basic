@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountriesComponent implements OnInit {
 
+  message: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
   }
 
 }
