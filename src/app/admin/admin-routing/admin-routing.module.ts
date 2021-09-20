@@ -4,6 +4,7 @@ import { CanActivateGuardService } from 'src/app/guards/can-activate-guard.servi
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { ProjectsComponent } from '../components/projects/projects.component';
 import { ProjectsDetailsComponent } from '../components/projects-details/projects-details.component';
+import { MastersComponent } from '../components/masters/masters.component';
 
 const routes: Routes = [
 
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: "dashboard", component: DashboardComponent, data: { linkIndex: 0 }  },
     { path: "projects", component: ProjectsComponent, data: { linkIndex: 2 } },
     { path: "projects/view/:projectid", component: ProjectsDetailsComponent, data: { linkIndex: 3 } },
+    { path: "masters", component: MastersComponent, data: { linkIndex: 4 } },
   ]},
 
 ];

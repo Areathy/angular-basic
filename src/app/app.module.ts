@@ -16,7 +16,6 @@ import { AlertDirective } from './directives/alert.directive';
 import { RepeaterDirective } from './directives/repeater.directive';
 import { EmployeeModule } from './employee/employee.module';
 import { AboutComponent } from './admin/about/about.component';
-
 @NgModule({
   declarations: [
     AppComponent,
