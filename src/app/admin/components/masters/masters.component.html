@@ -17,6 +17,8 @@
                     [ngClass]="{ 'active': activeItem == tab.itemName}" (click)="activeItem = tab.itemName">
                     {{tab.displayName}}
                 </a>
+                <span class="fa fa-window-close" (click)="onCloseClick(tab)">
+                </span>
             </li>
         </ul>
 
