@@ -25,8 +25,11 @@
         <div class="tab-content">
             <div class="tab-pane fade show" role="tabpanel" *ngFor="let tab of tabs" [id]="tab.itemName"
                 [ngClass]="{ 'active': activeItem == tab.itemName}">
-                <ng-template appComponentLoader>
-                </ng-template>
+
+                <div class="pl-md-3 pr-md-3 mx-auto">
+                    <ng-template appComponentLoader></ng-template>
+                </div>
+
             </div>
         </div>
     </div>

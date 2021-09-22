@@ -14,8 +14,25 @@ export class CountriesService
   {
   }
 
-  getCountries(): Observable<Country[]>
-  {
+  getCountries(): Observable<Country[]> {
     return this.httpClient.get<Country[]>(this.urlPrefix + "/api/countries", { responseType: "json" });
   }
+  
+
+  getCountryByCountryID(CountryID: number): Observable<Country> {
+    return this.httpClient.get<Country>(this.urlPrefix +  "/api/countries/searchbycountryid/" + CountryID, { responseType: "json" });
+  }
+
+  insertCountry(newCountry: Country): Observable<Country> {
+    return this.httpClient.post<Country>(this.urlPrefix + "/api/countries", newCountry, { responseType: "json" });
+  }
+
+  updateCountry(existingCountry: Country): Observable<Country> {
+    return this.httpClient.put<Country>(this.urlPrefix + "/api/countries", existingCountry, { responseType: "json" });
+  }
+
+  deleteCountry(CountryID: number): Observable<string>  {
+    return this.httpClient.delete<string>(this.urlPrefix + "/api/countries?CountryID=" + CountryID);
+  }
+
 }

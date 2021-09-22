@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchByType, ProjectObjectType } from '../admin/components/projects/types';
+import { SearchByType } from '../admin/components/projects/types';
 
 
 @Pipe({
@@ -7,7 +7,7 @@ import { SearchByType, ProjectObjectType } from '../admin/components/projects/ty
   pure: false
 })
 export class FilterPipe implements PipeTransform {
-  transform(value: ProjectObjectType[], searchBy: SearchByType, searchText: string): any {
+  transform(value: any[], searchBy: SearchByType, searchText: string): any {
     if (value == null)
     {
       return value;

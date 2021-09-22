@@ -25,6 +25,32 @@
         "clientLocationID": 2,
         "clientLocationName": "London"
       }
+    },
+    {
+      "projectID": 3,
+      "projectName": "Enjoyment Tracker",
+      "dateOfStart": "1990-03-15",
+      "teamSize": 45,
+      "Active": false,
+      "status": "Support",
+      "clientLocationID": 34,
+      "clientLocation": {
+        "clientLocationID": 34,
+        "clientLocationName": "Canada"
+      }
+    },
+    {
+      "projectID": 5,
+      "projectName": "Enjoyment Tracker",
+      "dateOfStart": "1590-03-15",
+      "teamSize": 25,
+      "Active": true,
+      "status": "Support",
+      "clientLocationID": 21,
+      "clientLocation": {
+        "clientLocationID": 21,
+        "clientLocationName": "United Kingdom"
+      }
     }
   ],
   "roles": [
