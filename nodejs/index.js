@@ -116,6 +116,16 @@ app.delete(
 //GET api/countries
 app.get("/api/countries", countries.getCountries);
 
+//POST api/countries
+app.post("/api/countries", countries.postCountries);
+
+//PUT api/countries
+app.put("/api/countries", countries.putCountries);
+
+//DELETE api/countries
+app.delete("/api/countries", countries.deleteCountries);
+
+
 //POST /register
 app.post("/register", function (req, res) {
   console.log(req.method, req.url);
