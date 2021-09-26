@@ -10,9 +10,7 @@ export class CountriesService
 {
   urlPrefix: string = "http://localhost:9090";
 
-  constructor(private httpClient: HttpClient)
-  {
-  }
+  constructor(private httpClient: HttpClient) { }
 
   getCountries(): Observable<Country[]> {
     return this.httpClient.get<Country[]>(this.urlPrefix + "/api/countries", { responseType: "json" });
@@ -31,7 +29,7 @@ export class CountriesService
     return this.httpClient.put<Country>(this.urlPrefix + "/api/countries", existingCountry, { responseType: "json" });
   }
 
-  deleteCountry(CountryID: number): Observable<string>  {
+  deleteCountry(CountryID: number): Observable<string> {
     return this.httpClient.delete<string>(this.urlPrefix + "/api/countries?CountryID=" + CountryID);
   }
 

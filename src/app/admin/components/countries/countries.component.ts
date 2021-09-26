@@ -18,8 +18,8 @@ export class CountriesComponent implements OnInit {
 
   //Objects for Delete
   deleteCountry: Country = new Country();
-  editIndex: number = 0;
-  deleteIndex: number = 0;
+  editIndex: number = null!;
+  deleteIndex: number = null!;
 
   //Properties for Searching
   searchBy: SearchByType = "countryName";
@@ -31,14 +31,15 @@ export class CountriesComponent implements OnInit {
   pageSize: number = 7;
 
   //Reactive Forms
-  newForm!: FormGroup;
-  editForm!: FormGroup;
+  newForm: FormGroup | any = null;
+  editForm: FormGroup | any = null;
+
 
   //Autofocus TextBoxes
   @ViewChild("defaultTextBox_New") defaultTextBox_New!: ElementRef;
   @ViewChild("defaultTextBox_Edit") defaultTextBox_Edit!: ElementRef;
 
-  //Sorting
+    //Sorting
   sortBy: string = "countryName";
   sortOrder: string = "ASC"; //ASC | DESC
 
@@ -52,7 +53,7 @@ export class CountriesComponent implements OnInit {
       (response: Country[]) => {
         this.countries = response;
         this.showLoading = false;
-        this.calculateNoOfPages();
+        // this.calculateNoOfPages();
       }
     );
 
@@ -107,7 +108,7 @@ export class CountriesComponent implements OnInit {
         var p: Country = new Country();
         p.countryID = response.countryID;
         p.countryName = response.countryName;
-        this.countries.push();
+        this.countries.push(p);
 
         //Reset the newForm
         this.newForm.reset();
@@ -116,7 +117,7 @@ export class CountriesComponent implements OnInit {
 
       }, (error) => {
           console.log(error);
-        })  ;
+        });
     }
   }
 

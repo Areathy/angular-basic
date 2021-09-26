@@ -9,12 +9,11 @@ export class Country
     //     this.countryName = countryNameParam;
     // }
 
-    countryID: number = 0;
-    countryName: string = "";
+    countryID: number;
+    countryName: string;
 
-    constructor()
-    {
-        this.countryID;
-        this.countryName;
+    constructor() {
+        this.countryID = null!;
+        this.countryName = null!;
     }
 }
