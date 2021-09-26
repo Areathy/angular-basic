@@ -1,11 +1,11 @@
 export class ClientLocation
 {
-    clientLocationID: any;
-    clientLocationName: any;
+    clientLocationID: number = null!;
+    clientLocationName: string = null!;
 
     constructor()
     {
-        this.clientLocationID = null;
-        this.clientLocationName = null;
+        this.clientLocationID = null!;
+        this.clientLocationName = null!;
     }
 }
