@@ -6,7 +6,7 @@ jsonfile = __dirname + "/data.json";
 function getTaskPriorities(req, res) {
   console.log(req.method, req.url);
   taskPriorities = JSON.parse(fs.readFileSync(jsonfile, "utf8")).taskPriorities;
-  console.log("Response: ", taskPriorities);
+  // console.log("Response: ", taskPriorities);
   res.send(helpers.toCamel(taskPriorities));
 }
 
@@ -32,7 +32,7 @@ function putTaskPriorities(req, res) {
   console.log(req.method, req.url);
   taskPriorities = JSON.parse(fs.readFileSync(jsonfile)).taskPriorities;
   taskPriorities = taskPriorities.map((taskPriority) =>
-  taskPriority.taskPriorityID == req.body.countryID
+  taskPriority.taskPriorityID == req.body.taskPriorityID
       ? req.body
       : taskPriority
   );

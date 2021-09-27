@@ -263,6 +263,13 @@ data = {
     {"taskPriorityID": 2, "taskPriorityName": "Normal"},
     {"taskPriorityID": 3, "taskPriorityName": "Below Normal"},
     {"taskPriorityID": 4, "taskPriorityName": "Low"}
+  ],
+  taskStatuses: [
+    { "taskStatusID": 1, "taskStatusName": "Holding" },
+    { "taskStatusID": 2, "taskStatusName": "Prioritized" },
+    { "taskStatusID": 3, "taskStatusName": "Started" },
+    { "taskStatusID": 4, "taskStatusName": "Finished" },
+    { "taskStatusID": 5, "taskStatusName": "Reverted"}
   ]
 };
 

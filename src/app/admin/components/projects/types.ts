@@ -9,6 +9,6 @@ type ProjectObjectType = {
     clientLocation: { clientLocationID: number; clientLocationName: string };
   };
   
-  type SearchByType = "projectName" | "projectID" | "dateOfStart" | "teamSize" | "countryName" | "clientLocationName" | "taskPriorityName";
+  type SearchByType = "projectName" | "projectID" | "dateOfStart" | "teamSize" | "countryName" | "clientLocationName" | "taskPriorityName" | "taskStatusName";
 
   export{SearchByType, ProjectObjectType}
