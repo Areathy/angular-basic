@@ -11,6 +11,7 @@ var helpers = require("./helpers");
 var users = require("./projects");
 var clientlocations = require("./clientlocations");
 var countries = require("./countries");
+var taskpriorities = require("./taskpriorities");
 
 app.listen(9090, startup);
 function startup() {
@@ -124,6 +125,20 @@ app.put("/api/countries", countries.putCountries);
 
 //DELETE api/countries
 app.delete("/api/countries", countries.deleteCountries);
+
+
+//GET api/taskpriorities
+app.get("/api/taskpriorities", taskpriorities.getTaskPriorities);
+
+//POST api/taskpriorities
+app.post("/api/taskpriorities", taskpriorities.postTaskPriorities);
+
+//PUT api/taskpriorities
+app.put("/api/taskpriorities", taskpriorities.putTaskPriorities);
+
+//DELETE api/taskpriorities
+app.delete("/api/taskpriorities", taskpriorities.deleteTaskPriorities);
+
 
 
 //POST /register

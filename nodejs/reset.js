@@ -258,6 +258,12 @@ data = {
     { countryID: 70, countryName: "Zambia" },
     { countryID: 71, countryName: "Zimbabwe" },
   ],
+  taskPriorities: [
+    {"taskPriorityID": 1, "taskPriorityName": "Urgent"},
+    {"taskPriorityID": 2, "taskPriorityName": "Normal"},
+    {"taskPriorityID": 3, "taskPriorityName": "Below Normal"},
+    {"taskPriorityID": 4, "taskPriorityName": "Low"}
+  ]
 };
 
 fs.writeFileSync(jsonfile, JSON.stringify(data), "utf8");
