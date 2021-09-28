@@ -38,6 +38,16 @@ export class LoginService
       }));
   }
 
+  public detectIfAlreadyLoggedIn() {
+    if (this.jwtHelperService.isTokenExpired() == false)
+    {
+      var currentUser = JSON.parse(sessionStorage.currentUser);
+      this.currentUserName = currentUser.userName;
+      this.currentUserRole = currentUser.role;
+    }
+  }
+
+
   public Register(signUpViewModel: SignUpViewModel): Observable<any>
   {
     this.httpClient = new HttpClient(this.httpBackend);

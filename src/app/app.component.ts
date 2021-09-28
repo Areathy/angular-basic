@@ -12,8 +12,7 @@ import { fadeAnimation, slideUpAnimation, zoomUpAnimation, zoomLeftAnimation, sl
   styleUrls: ['./app.component.scss'],
   animations: [keyFrameAnimation]
 })
-export class AppComponent
-{
+export class AppComponent {
   constructor(public loginService: LoginService, private domSanitizer: DomSanitizer) {}
 
   // myProperty = "<svg>Henrietha<svg>";
@@ -23,7 +22,7 @@ export class AppComponent
   // myProperty = this.domSanitizer.bypassSecurityTrustResourceUrl("https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg");
 
   ngOnInit() {
-    
+    this.loginService.detectIfAlreadyLoggedIn();
     // this.router.events.subscribe((event: any) => {
     //   if (event instanceof NavigationEnd)
     //   {
