@@ -23,6 +23,7 @@ export class AppComponent
   // myProperty = this.domSanitizer.bypassSecurityTrustResourceUrl("https://upload.wikimedia.org/wikipedia/commons/1/12/User_icon_2.svg");
 
   ngOnInit() {
+    
     // this.router.events.subscribe((event: any) => {
     //   if (event instanceof NavigationEnd)
     //   {

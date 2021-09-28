@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent, data: { linkIndex: 2 } },
   { path: "signup", component: SignUpComponent, canDeactivate: [ CanDeactivateGuardService ], data: { linkIndex: 3 } },
   { path: "about", component: AboutComponent, data: { linkIndex: 1 } },
-  { path: "admin", loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule) }
+  { path: "admin", loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule) },
+  { path: "employee", loadChildren: () => import("./employee/employee.module").then(m => m.EmployeeModule) }
 ];
 
 @NgModule({

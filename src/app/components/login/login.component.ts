@@ -23,15 +23,16 @@ export class LoginComponent implements OnInit
 
   @ViewChild("userName") userName!: ElementRef;
 
-  onClickLogin(event: any)
-  {
+  onClickLogin(event: any) {
     this.loginService.Login(this.loginViewModel).subscribe(
-      (response) =>
-      {
-        this.router.navigate(["/admin", "dashboard"]);
+      (response) => {
+        if (this.loginService.currentUserRole == "Admin") {
+          this.router.navigate(["/admin", "dashboard"]);
+        } else {
+          this.router.navigate(["/employee", "tasks"]);
+        }
       },
-      (error) =>
-      {
+      (error) => {
         console.log(error);
         this.loginError = "Invalid Username or Password";
       },

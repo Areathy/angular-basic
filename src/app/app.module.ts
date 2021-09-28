@@ -24,7 +24,7 @@ import { AboutComponent } from './admin/about/about.component';
     LoginComponent,
     SignUpComponent,
     AlertDirective,
-    RepeaterDirective
+    RepeaterDirective,
   ],
   imports: [
     BrowserModule,

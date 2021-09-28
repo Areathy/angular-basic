@@ -48,6 +48,20 @@ data = {
       Password: "Admin123#",
       Role: "Admin",
     },
+    {
+      id: 2,
+      UserName: "employee",
+      Email: "employee@gmail.com",
+      Password: "Employee123#",
+      Role: "Employee"
+    },
+    {
+      id: 3,
+      UserName: "henrietha",
+      Email: "devhenrietha@gmail.com",
+      Password: "Henrietha123#",
+      Role: "Software Engineer"
+    },
   ],
   clientLocations: [
     {
