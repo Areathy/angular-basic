@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from '../../../services/tasks.service';
+import { LoginService } from '../../../services/login.service';
+import { GroupedTask } from '../../../models/grouped-task';
 
 @Component({
   selector: 'app-tasks',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
+  taskGroups!: GroupedTask[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private tasksService: TasksService, public loginService: LoginService) {
   }
 
+  ngOnInit() {
+    this.tasksService.getTasks().subscribe((response) => {
+      this.taskGroups = response;
+    });
+  }
 }

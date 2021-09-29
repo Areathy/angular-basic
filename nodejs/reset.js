@@ -284,6 +284,26 @@ data = {
     { "taskStatusID": 3, "taskStatusName": "Started" },
     { "taskStatusID": 4, "taskStatusName": "Finished" },
     { "taskStatusID": 5, "taskStatusName": "Reverted"}
+  ],
+  tasks: [
+   { 
+      "taskID": 1,
+      "taskName": null,
+      "description": null,
+      "createdOn": Date.now,
+      "projectID": 1,
+      "createdBy": 1,
+      "assignedTo": null,
+      "taskPriorityID": 1,
+      "lastUpdatedOn": Date.now,
+      'currentStatus': "Holding",
+      "currentTaskStatusID": 1,
+
+      "project": projects,
+      "createdByUser": null,
+      "assignedToUser": null,
+      "taskStatusDetails": null,
+    }
   ]
 };
 

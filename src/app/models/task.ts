@@ -33,10 +33,10 @@ export class Task {
         this.currentStatus = null!;
 
         this.project = null!;
-        this.createdByUser = null;
-        this.assignedToUser = null;
-        this.taskStatusDetails = null;
-        this.taskStatusDetails = null;
+        this.createdByUser = null!;
+        this.assignedToUser = null!;
+        this.taskStatusDetails = null!;
+        this.taskStatusDetails = null!;
         this.currentTaskStatusID = null!;
     }
 }

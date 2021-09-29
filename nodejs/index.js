@@ -13,6 +13,7 @@ var clientlocations = require("./clientlocations");
 var countries = require("./countries");
 var taskpriorities = require("./taskpriorities");
 var taskstatuses = require("./taskstatuses");
+var tasks = require("./tasks");
 
 app.listen(9090, startup);
 function startup() {
@@ -153,6 +154,19 @@ app.put("/api/taskstatuses", taskstatuses.putTaskStatuses);
 //DELETE api/taskstatuses
 app.delete("/api/taskstatuses", taskstatuses.deleteTaskStatuses);
 
+
+
+//GET api/tasks
+app.get("/api/tasks", tasks.getTasks);
+
+//POST api/tasks
+app.post("/api/createtask", tasks.postTasks);
+
+//PUT api/tasks
+app.put("/api/updatetaskstatus", tasks.putTasks);
+
+//DELETE api/tasks
+app.delete("/api/tasks", tasks.deleteTasks);
 
 
 

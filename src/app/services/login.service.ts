@@ -88,4 +88,9 @@ export class LoginService
       return true; //token is valid
     }
   }
+
+  public getAllEmployes(): Observable<any> {
+    this.httpClient = new HttpClient(this.httpBackend);
+    return this.httpClient.get<any>(this.urlPrefix + "/api/getallemployees", { responseType: "json" });
+  }
 }
