@@ -6,7 +6,7 @@
     <div class="col-lg-6 mb-1" *ngFor="let taskGroup of taskGroups">
         <div class="card card-primary">
 
-            <div class="card-header">
+            <div class="card-header" [ngClass]="getTaskGroupBgCssClass(taskGroup.taskStatusName)">
                 <div class="card-title">
                     <h4>
                         {{taskGroup.taskStatusName}}
@@ -24,7 +24,8 @@
                     <div class="card-header">
                         #{{i + 1}} &nbsp;&nbsp; {{task.taskName}}
 
-                        <div class="badge float-right mr-1" style="font-size:15px" >
+                        <div class="badge float-right mr-1" style="font-size:15px" 
+                        [ngClass]="getTaskPriorityBadgeCssClass(task.taskPriority?.taskPriorityName)">
                             {{task.taskPriority?.taskPriorityName}}
                         </div>
                     </div>
@@ -76,7 +77,8 @@
                                             <i class="fa fa-calendar"></i>
                                             {{taskStatusDetail?.statusUpdationDateTimeString}}
                                         </td>
-                                        <td class="text-primary" [ngClass]="getTaskGroupTextCssClass(taskStatusDetail?.taskStatus?.taskStatusName)">
+                                        <td class="text-primary" 
+                                        [ngClass]="getTaskGroupTextCssClass(taskStatusDetail?.taskStatus?.taskStatusName)">
                                             {{taskStatusDetail?.taskStatus?.taskStatusName}}
                                         </td>
                                         <td>
