@@ -18,13 +18,13 @@ export class TasksService {
     return this.httpClient.get<GroupedTask[]>(this.urlPrefix + "/api/tasks", { responseType: "json" });
   }
 
-  getTaskByTaskID(TaskID: number) : Observable<Task>  {
-    return this.httpClient.get<Task>(this.urlPrefix + "/api/tasks/searchbytaskid/" + TaskID, { responseType: "json" });
-  }
+    getTaskByTaskID(TaskID: number) : Observable<Task>  {
+      return this.httpClient.get<Task>(this.urlPrefix + "/api/tasks/searchbytaskid/" + TaskID, { responseType: "json" });
+    }
 
-  updateTaskStatus(taskStatusDetail: TaskStatusDetail) : Observable<TaskStatusDetail>  {
-    return this.httpClient.put<TaskStatusDetail>(this.urlPrefix + "/api/updatetaskstatus", taskStatusDetail, { responseType: "json" });
-  }
+    updateTaskStatus(taskStatusDetail: TaskStatusDetail) : Observable<TaskStatusDetail>  {
+      return this.httpClient.put<TaskStatusDetail>(this.urlPrefix + "/api/updatetaskstatus", taskStatusDetail, { responseType: "json" });
+    }
 
   insertTask(newTask: Task): Observable<Task>  {
     return this.httpClient.post<Task>(this.urlPrefix + "/api/createtask", newTask, { responseType: "json" });
