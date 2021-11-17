@@ -22,19 +22,19 @@
                 <div class="card mb-1" *ngFor="let task of taskGroup.tasks; let i = index">
 
                     <div class="card-header">
-                        #{{i + 1}} &nbsp;&nbsp; {{task.taskName}}
+                        <!-- #{{i + 1}} &nbsp;&nbsp; {{task.taskName}} -->
 
-                        <div class="badge float-right mr-1" style="font-size:15px" 
-                        [ngClass]="getTaskPriorityBadgeCssClass(task.taskPriority?.taskPriorityName)">
+                        <!-- <div class="badge float-right mr-1" style="font-size:15px"
+                            [ngClass]="getTaskPriorityBadgeCssClass(task.taskPriority?.taskPriorityName)">
                             {{task.taskPriority?.taskPriorityName}}
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="card-body">
-                        <div>{{task.description}}</div>
+                        <!-- <div>{{task.description}}</div> -->
 
                         <div>
-                            <table class="table table-sm table-borderless">
+                            <!-- <table class="table table-sm table-borderless">
                                 <tr>
                                     <td>Created:</td>
                                     <td>
@@ -62,7 +62,7 @@
                                         {{task.project?.clientLocation?.clientLocationName}}
                                     </td>
                                 </tr>
-                            </table>
+                            </table> -->
 
                             <table class="table table-sm table-bordered">
                                 <thead class="table-light">
@@ -72,13 +72,13 @@
                                     <th>Description</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let taskStatusDetail of task.taskStatusDetails">
+                                    <!-- <tr *ngFor="let taskStatusDetail of task.taskStatusDetails">
                                         <td>
                                             <i class="fa fa-calendar"></i>
                                             {{taskStatusDetail?.statusUpdationDateTimeString}}
                                         </td>
-                                        <td class="text-primary" 
-                                        [ngClass]="getTaskGroupTextCssClass(taskStatusDetail?.taskStatus?.taskStatusName)">
+                                        <td class="text-primary"
+                                            [ngClass]="getTaskGroupTextCssClass(taskStatusDetail?.taskStatus?.taskStatusName)">
                                             {{taskStatusDetail?.taskStatus?.taskStatusName}}
                                         </td>
                                         <td>
@@ -88,7 +88,7 @@
                                         <td>
                                             {{taskStatusDetail?.description}}
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -97,15 +97,18 @@
 
                     <div class="card-footer">
                         <div class="btn-group">
-                            <a [routerLink]=" [ '/employee', 'updatetaskstatus', task.taskID ] " class="btn btn-sm btn-outline-secondary">
+                            <!-- <a [routerLink]=" [ '/employee', 'updatetaskstatus', task.taskID ] "
+                                class="btn btn-sm btn-outline-secondary">
                                 <i class="fa fa-pencil"></i>
                                 Change Status
                             </a>
 
-                            <a [routerLink]=" [ '/employee', 'edittask', task.taskID ] " class="btn btn-sm btn-outline-secondary" *ngIf="task.createdByUser?.userName == loginService.currentUserName">
+                            <a [routerLink]=" [ '/employee', 'edittask', task.taskID ] "
+                                class="btn btn-sm btn-outline-secondary"
+                                *ngIf="task.createdByUser?.userName == loginService.currentUserName">
                                 <i class="fa fa-pencil-square-o"></i>
                                 Edit
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>

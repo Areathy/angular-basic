@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-12">
-      <table class="table table-sm table-borderless">
+      <!-- <table class="table table-sm table-borderless">
         <tr>
           <td style="width:65px">Created:</td>
           <td>
@@ -21,13 +21,14 @@
             {{currentTask.lastUpdatedOnString}}
           </td>
         </tr>
-      </table>
+      </table> -->
     </div>
 
     <div class="col-lg-12">
       <div class="form-group">
         <label for="description" class="text-info">Description:</label>
-        <textarea class="form-control" id="description" placeholder="Description" formControlName="description"></textarea>
+        <textarea class="form-control" id="description" placeholder="Description"
+          formControlName="description"></textarea>
       </div>
     </div>
 
@@ -44,7 +45,11 @@
             </option>
           </select>
 
-          <span class="text-danger" *ngIf="editTaskStatusForm.get('taskStatusID').invalid && (editTaskStatusForm.get('taskStatusID').dirty || editTaskStatusForm.get('taskStatusID').touched || editTaskStatusForm.submitted) && editTaskStatusForm.get('taskStatusID').errors?.required">
+          <!-- <span class="text-danger"
+            *ngIf="editTaskStatusForm.get('taskStatusID').invalid && (editTaskStatusForm.get('taskStatusID').dirty || editTaskStatusForm.get('taskStatusID').touched || editTaskStatusForm.submitted) && editTaskStatusForm.get('taskStatusID').errors.required">
+            Please select current task status
+          </span> -->
+          <span class="text-danger">
             Please select current task status
           </span>
         </div>
@@ -54,7 +59,8 @@
 
     <div class="col-lg-12 border-top text-center">
       <div>
-        <button class="btn btn-success btn-lg mt-2" (click)="onUpdateTaskStatusClick($event)">Update Task Status</button>
+        <!-- <button class="btn btn-success btn-lg mt-2" (click)="onUpdateTaskStatusClick($event)">Update Task Status</button> -->
+        <button class="btn btn-success btn-lg mt-2">Update Task Status</button>
       </div>
       <div>
         <a [routerLink]=" [ '/employee', 'tasks' ] " class="btn btn-info btn-sm mt-1">Back to Tasks</a>
