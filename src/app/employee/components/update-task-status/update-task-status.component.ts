@@ -53,19 +53,19 @@ export class UpdateTaskStatusComponent implements OnInit {
     });
   }
 
-  // onUpdateTaskStatusClick(event:any)  {
-  //   this.editTaskStatusForm["submitted"] = true;
+  onUpdateTaskStatusClick(event:any)  {
+    this.editTaskStatusForm["submitted"] = true;
 
-  //   if (this.editTaskStatusForm.valid)  {
-  //     //send REST-API call to server
-  //     this.tasksService.updateTaskStatus(this.editTaskStatusForm.value).subscribe((response) => {
-  //       this.router.navigate( [ "/employee", "tasks" ]);
-  //     }, (error) => {
-  //       console.log(error);
-  //     });
-  //   }
-  //   else  {
-  //     console.log(this.editTaskStatusForm.errors);
-  //   }
-  // }
+    if (this.editTaskStatusForm.valid)  {
+      //send REST-API call to server
+      this.tasksService.updateTaskStatus(this.editTaskStatusForm.value).subscribe((response) => {
+        this.router.navigate( [ "/employee", "tasks" ]);
+      }, (error) => {
+        console.log(error);
+      });
+    }
+    else  {
+      console.log(this.editTaskStatusForm.errors);
+    }
+  }
 }
